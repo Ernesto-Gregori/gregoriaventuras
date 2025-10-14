@@ -1,0 +1,636 @@
+/* Variables */
+:root {
+    --azul-mineral: #2C3E50;
+    --gris-calido: #EAE7DC;
+    --terracota: #D97D54;
+    --terracota-hover: #BF6940;
+    --mostaza: #E1B866;
+    --blanco: #FFFFFF;
+    --gris-claro: #F8F5F0;
+    --gris-medio: #F3F1EB;
+    --borde: #D6D1C4;
+
+    --fuentePrincipal: 'Poppins', sans-serif;
+    --fuenteSecundaria: 'Lora', serif;
+}
+/* Reset */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /*Hack para Box Model*/
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Tipografía base */
+body {
+    font-size: 1.6rem; /* 1 rem = 10px*/
+    font-family: var(--fuenteSecundaria);
+    line-height: 1.6;
+    color: var(--azul-mineral);
+    background-color: var(--gris-calido);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuentePrincipal);
+    font-weight: 700;
+    color: var(--azul-mineral);
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; font-weight: 600; }
+h3 { font-size: 1.75rem; font-weight: 600; }
+h4 { font-size: 1.5rem; font-weight: 500; }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: rgba(44, 62, 80, 0.1);
+}
+
+.header.scrolled {
+    background: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blanco);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.header.scrolled .logo {
+    color: var(--azul-mineral);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.header.scrolled .nav-menu a {
+    color: var(--azul-mineral);
+}
+
+.nav-menu a:hover {
+    background: var(--terracota);
+    color: var(--blanco);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--blanco);
+    cursor: pointer;
+}
+
+.header.scrolled .menu-toggle {
+    color: var(--azul-mineral);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(44, 62, 80, 0.5), rgba(44, 62, 80, 0.5)), 
+                url('../img/banner-inicio.jpg') center/cover no-repeat;
+    color: var(--blanco);
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    color: var(--blanco);
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+section {
+    padding: 5rem 2rem;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* ============================================
+   NUESTRA HISTORIA
+   ============================================ */
+.historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.historia-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.persona-card {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.persona-card h4 {
+    margin-bottom: 1rem;
+    color: var(--azul-mineral);
+}
+
+.persona-card p {
+    margin-bottom: 1.5rem;
+}
+
+.historia-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--terracota);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--terracota-hover);
+}
+
+.btn-secondary {
+    background: var(--blanco);
+    color: var(--terracota);
+    border: 2px solid var(--terracota);
+}
+
+.btn-secondary:hover {
+    background: var(--terracota);
+    color: var(--blanco);
+}
+
+/* ============================================
+   BLOG
+   ============================================ */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.blog-card {
+    background: var(--blanco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-meta {
+    color: var(--terracota);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.blog-content p {
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+}
+
+/* ============================================
+   QUOTE
+   ============================================ */
+.quote {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--azul-mineral);
+    margin: 4rem 0;
+}
+
+/* ============================================
+   FORMULARIO
+   ============================================ */
+.contacto-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--blanco);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--azul-mineral);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--terracota);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background: var(--blanco);
+    padding: 3rem 2rem 1.5rem;
+    border-top: 1px solid var(--borde);
+}
+
+.footer-content {
+    max-width: 1240px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-text {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: var(--azul-mineral);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--terracota);
+}
+
+.copyright {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--borde);
+    color: var(--azul-mineral);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--gris-medio);
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET (max-width: 921px)
+   ============================================ */
+@media (max-width: 921px) {
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--azul-mineral);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        color: var(--blanco);
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .historia-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* ============================================
+   ENTRADAS DE BLOG
+   ============================================ */
+.entry-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--azul-mineral) 0%, var(--terracota) 100%);
+    color: var(--blanco);
+    padding: 8rem 2rem 4rem;
+}
+
+.entry-hero-content {
+    max-width: 800px;
+}
+
+.entry-meta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.entry-category {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.entry-date {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.entry-hero h1 {
+    color: var(--blanco);
+    font-size: 2.5rem;
+}
+
+.featured-image {
+    max-width: 1000px;
+    margin: -3rem auto 0;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.featured-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.entry-content {
+    background: var(--blanco);
+    margin-top: 3rem;
+}
+
+.entry-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.entry-container h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--azul-mineral);
+}
+
+.entry-container p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+.entry-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.entry-images-grid img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.entry-footer-image {
+    margin: 3rem 0;
+}
+
+.entry-footer-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.prayer-box {
+    background: var(--gris-medio);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+    border-left: 4px solid var(--terracota);
+}
+
+.prayer-box h3 {
+    color: var(--azul-mineral);
+    margin-bottom: 1rem;
+}
+
+.prayer-box ul {
+    margin-left: 1.5rem;
+}
+
+.prayer-box li {
+    margin-bottom: 0.75rem;
+    font-size: 1.0625rem;
+}
+
+.entry-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 4rem 0;
+    padding-top: 3rem;
+    border-top: 1px solid var(--borde);
+}
+
+.nav-previous, .nav-next {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-next {
+    text-align: right;
+}
+
+.nav-subtitle {
+    font-size: 0.875rem;
+    color: var(--terracota);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.nav-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--azul-mineral);
+}
+
+.entry-cta {
+    background: var(--gris-calido);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.entry-cta h3 {
+    margin-bottom: 1rem;
+}
+
+.entry-cta p {
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE - MÓVIL (max-width: 544px)
+   ============================================ */
+@media (max-width: 544px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .contacto-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .quote {
+        font-size: 1.5rem;
+    }
+}
