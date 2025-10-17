@@ -611,6 +611,40 @@ footer {
     margin-bottom: 2rem;
 }
 
+.error-404-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: var(--gris-calido);
+}
+.error-content {
+    max-width: 600px;
+}
+
+/* ============================================
+   404 PAGE
+   ============================================ */
+.error-404 {
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+.error-message {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    color: var(--azul-mineral);
+    margin-bottom: 1.5rem;
+}
+.error-text {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+}
+
 /* ============================================
    RESPONSIVE - MÓVIL (max-width: 544px)
    ============================================ */
