@@ -1,53 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Meta Tags Básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página no encontrada - Gregori Aventuras</title>
+    <meta name="description" content="Somos Ernesto y Diana, una pareja que vive la aventura en compañía. Únete a nuestro viaje de fe y descubre recursos para tu crecimiento espiritual.">
+    <meta name="keywords" content="instituto bíblico, méxico, ministerio, aventura de fe, Ernesto Gregori, Diana de Gregori, servicio cristiano">
+    <meta name="author" content="Ernesto y Diana Gregori">
+    <meta name="robots" content="index, follow">
+    <title>Aventura en Compañía - Gregori Aventuras</title>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gregoriaventuras.xyz/">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gregoriaventuras.xyz/">
+    <meta property="og:title" content="Aventura en Compañía - Gregori Aventuras">
+    <meta property="og:description" content="Somos Ernesto y Diana, una pareja que vive la aventura en compañía. Únete a nuestro viaje de fe.">
+    <meta property="og:image" content="https://gregoriaventuras.xyz/img/banner-inicio.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Gregori Aventuras">
+    <meta property="og:locale" content="es_MX">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://gregoriaventuras.xyz/">
+    <meta name="twitter:title" content="Aventura en Compañía - Gregori Aventuras">
+    <meta name="twitter:description" content="Somos Ernesto y Diana, una pareja que vive la aventura en compañía. Únete a nuestro viaje de fe.">
+    <meta name="twitter:image" content="https://gregoriaventuras.xyz/img/banner-inicio.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Gregori Aventuras" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#2C3E50">
+    <!-- Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .error-404-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            background: var(--gris-calido);
-        }
-        .error-content {
-            max-width: 600px;
-        }
-        .error-404 {
-            font-size: 8rem;
-            font-weight: 700;
-            color: var(--terracota);
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-        .error-message {
-            font-family: 'Satisfy', cursive;
-            font-size: 2rem;
-            color: var(--azul-mineral);
-            margin-bottom: 1.5rem;
-        }
-        .error-text {
-            margin-bottom: 2rem;
-            font-size: 1.125rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">   
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3TJJ64SL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-BC3TJJ64SL');
+    </script>
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.instagram.com">
 </head>
 <body>
-    <div class="error-404-page">
-        <div class="error-content">
-            <div class="error-404">404</div>
-            <div class="error-message">Parece que te perdiste en la aventura...</div>
-            <p class="error-text">La página que buscas no existe o fue movida. Pero no te preocupes, podemos guiarte de vuelta al camino correcto.</p>
-            <a href="/" class="btn">Volver al inicio</a>
+    <!-- Header simplificado para 404 -->  
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo logo-404" aria-label="Ir al inicio de Gregori Aventuras">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.5 112.5"><defs><clipPath id="a"><path d="M53 29h133.84v62H53Zm0 0"/></clipPath><clipPath id="b"><path d="M0 0h134v62H0z"/></clipPath></defs><path fill="currentColor" d="M30.72 85.33c1.19.41 8.21-4.7 9.37-6.8 1.6-2.94-4.55-1.42-9.77-2.03S9.06 69.43 9.66 51.7c.6-17.72 20-17.45 21.4-17.38s16.71 3.04 16.71 18c0 14.95-11.3 11.92-14.17 11.45-2.88-.48-10.3-4.79-9.63-11.25s6.35-5.6 8.7-3.24c2.33 2.36 2.4 2.43 2.06 5.05-.33 2.63-1.13 3.17 1.14 4.31 2.27 1.15 5.35-2.35 4.88-5.45s-1.33-10.15-10.9-11.05c-11.24-1.06-13.99 12.68-10.56 19 4.68 8.62 32.26 16.19 35.37-7.75 3.32-25.54-39.59-40.53-51.35-5.73C1.12 67.76 15.49 80 30.72 85.33m0 0"/><g clip-path="url(#a)"><g fill="currentColor" clip-path="url(#b)" transform="translate(53 29)"><path d="M32.8 14.27q-.48-.85-1.35-1.31a4.5 4.5 0 0 0-2.06-.46q-2.04 0-3.27 1.35a5 5 0 0 0-1.22 3.56q0 2.4 1.28 3.74a4.7 4.7 0 0 0 3.55 1.32 4.3 4.3 0 0 0 2.63-.78 4.5 4.5 0 0 0 1.56-2.26h-5.33v-3.1h9.14v3.9a8.3 8.3 0 0 1-4.44 5.13 9 9 0 0 1-3.87.83 9 9 0 0 1-4.56-1.1 8 8 0 0 1-3.13-3.12 9 9 0 0 1-1.1-4.56q0-2.54 1.1-4.55a8 8 0 0 1 3.11-3.12A9 9 0 0 1 29.4 8.6q3.1 0 5.23 1.5a7 7 0 0 1 2.81 4.16ZM44.26 14.65a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.47-.65v4.45H47.4q-1.57 0-2.35.67-.8.67-.79 2.38v6.36h-4.2V12.35h4.2ZM63.5 18.99q0 .6-.08 1.23H53.9q.1 1.27.83 1.96.74.67 1.78.67 1.57 0 2.2-1.33h4.46a6.2 6.2 0 0 1-3.48 4.14q-1.34.6-3.02.61a7.4 7.4 0 0 1-3.6-.86 6 6 0 0 1-2.46-2.47 7.6 7.6 0 0 1-.88-3.73q0-2.14.88-3.74a6 6 0 0 1 2.43-2.45 7.5 7.5 0 0 1 3.63-.86q1.98 0 3.53.84a6 6 0 0 1 2.42 2.38q.88 1.54.88 3.6m-4.3-1.11q0-1.08-.75-1.72-.74-.64-1.84-.64-1.05 0-1.78.63-.72.6-.9 1.73ZM70.91 12.16q1.45 0 2.55.6 1.1.58 1.69 1.54v-1.95h4.2v13.69q0 1.9-.75 3.43a5.7 5.7 0 0 1-2.3 2.44 7.3 7.3 0 0 1-3.8.92 8 8 0 0 1-4.96-1.43 5.4 5.4 0 0 1-2.16-3.91h4.16q.18.79.92 1.25t1.83.45q1.29 0 2.08-.75.78-.75.78-2.4V24.1a4.8 4.8 0 0 1-4.24 2.17 5.6 5.6 0 0 1-3.08-.87 6 6 0 0 1-2.17-2.49 8 8 0 0 1-.8-3.72q0-2.11.8-3.72a5.7 5.7 0 0 1 5.25-3.31m4.24 7.05q0-1.57-.88-2.49-.87-.9-2.12-.9-1.27 0-2.14.9a3.4 3.4 0 0 0-.86 2.47q0 1.56.86 2.49.88.92 2.14.92 1.25 0 2.12-.9.88-.91.88-2.5M88.63 26.27a7.6 7.6 0 0 1-3.63-.86 6.4 6.4 0 0 1-2.53-2.47 7.3 7.3 0 0 1-.92-3.73q0-2.1.94-3.72a6.4 6.4 0 0 1 2.54-2.47 8 8 0 0 1 3.64-.86 8 8 0 0 1 3.64.86 6.3 6.3 0 0 1 2.55 2.47q.94 1.6.94 3.72 0 2.1-.96 3.72a6.4 6.4 0 0 1-2.57 2.48q-1.63.86-3.64.86m0-3.64q1.2 0 2.04-.88.86-.89.86-2.54t-.83-2.53q-.83-.9-2.03-.9-1.22 0-2.03.88t-.81 2.55q0 1.65.8 2.54.8.88 2 .88M102.24 14.65a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.47-.65v4.45h-1.16q-1.57 0-2.35.67-.8.67-.79 2.38v6.36h-4.2V12.35h4.2ZM110.67 10.93q-1.12 0-1.82-.64-.7-.66-.7-1.63 0-.99.7-1.62a2.6 2.6 0 0 1 1.82-.66q1.06 0 1.78.66.7.64.7 1.62 0 .97-.7 1.63-.71.64-1.78.64m2.09 1.42v13.72h-4.2V12.35ZM13 49.71H6.56l-1.03 3.05h-4.4L7.36 35.5h4.86l6.25 17.25h-4.45Zm-1.08-3.25-2.14-6.31-2.11 6.31ZM26.53 48.82l2.98-9.78h4.47l-4.86 13.72h-5.19l-4.87-13.72h4.5ZM48.67 45.68q0 .6-.08 1.23h-9.51q.1 1.27.82 1.96.75.67 1.79.67 1.58 0 2.18-1.33h4.47a6.2 6.2 0 0 1-3.48 4.14q-1.34.6-3.02.61a7.4 7.4 0 0 1-3.6-.86 6 6 0 0 1-2.46-2.47 7.6 7.6 0 0 1-.88-3.73q0-2.14.88-3.74a6 6 0 0 1 2.44-2.45 7.5 7.5 0 0 1 3.62-.86q1.98 0 3.53.84a6 6 0 0 1 2.43 2.38q.87 1.54.87 3.6m-4.3-1.11q0-1.08-.75-1.72-.73-.64-1.84-.64-1.05 0-1.78.63-.72.6-.9 1.73ZM59.23 38.9q2.4 0 3.84 1.56 1.45 1.56 1.45 4.28v8.02h-4.18V45.3q0-1.37-.72-2.12-.7-.76-1.9-.77-1.21 0-1.93.77a3 3 0 0 0-.7 2.12v7.46h-4.2V39.04h4.2v1.83q.62-.93 1.7-1.44a5.5 5.5 0 0 1 2.44-.53M75.08 49.2v3.56h-2.14a5.2 5.2 0 0 1-3.56-1.11q-1.29-1.12-1.28-3.66v-5.45h-1.67v-3.5h1.67v-3.35h4.2v3.35h2.75v3.5H72.3v5.5q0 .6.3.89.3.27.98.26ZM90.95 39.04v13.72h-4.2v-1.88q-.65.92-1.74 1.47-1.1.55-2.42.55a5.4 5.4 0 0 1-2.77-.69 4.8 4.8 0 0 1-1.87-2.03 7 7 0 0 1-.66-3.13v-8.01h4.17v7.45q0 1.38.7 2.14.72.75 1.93.75 1.23 0 1.93-.75.72-.75.72-2.14v-7.45ZM98.18 41.34a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.46-.65v4.45h-1.15q-1.58 0-2.36.67-.78.68-.78 2.38v6.36h-4.2V39.04h4.2ZM103.65 45.88q0-2.11.8-3.72a5.7 5.7 0 0 1 5.25-3.31q1.44 0 2.54.6 1.1.57 1.69 1.54v-1.95h4.2v13.72h-4.2v-1.94q-.63.95-1.72 1.55-1.1.6-2.55.59a5.5 5.5 0 0 1-3.05-.87 6 6 0 0 1-2.17-2.49 8 8 0 0 1-.8-3.72m10.28.02q0-1.57-.88-2.49-.88-.9-2.12-.9-1.27 0-2.14.9a3.4 3.4 0 0 0-.86 2.47q0 1.57.86 2.49.88.92 2.14.92 1.25 0 2.12-.9t.88-2.5M126.75 52.96q-1.8 0-3.2-.6a5.5 5.5 0 0 1-2.22-1.7 4.6 4.6 0 0 1-.9-2.4h4.15q.08.72.65 1.15.6.45 1.46.44.79 0 1.22-.3t.43-.8q0-.59-.62-.87-.6-.29-1.99-.62-1.47-.34-2.45-.72a4 4 0 0 1-1.7-1.22 3.3 3.3 0 0 1-.7-2.22q0-1.18.63-2.16a4.4 4.4 0 0 1 1.93-1.53 7 7 0 0 1 3.01-.56q2.58 0 4.06 1.28a5 5 0 0 1 1.7 3.4h-3.87a1.7 1.7 0 0 0-.62-1.15 2.2 2.2 0 0 0-1.4-.42q-.73 0-1.13.3a.9.9 0 0 0-.4.76q0 .6.63.9.64.3 1.95.57 1.53.41 2.49.78t1.69 1.24q.72.85.75 2.26 0 1.2-.68 2.16a4.5 4.5 0 0 1-1.93 1.48q-1.28.55-2.94.55m0 0"/></g></g>
+                </svg>
+            </a>
         </div>
+    </header> 
+  
+    <div class="error-404-page">  
+        <div class="error-content">  
+            <div class="error-404">404</div>  
+            <h1 class="error-message">Parece que te perdiste en la aventura...</h1>  
+            <p class="error-text">La página que buscas no existe o fue movida. Pero no te preocupes, podemos guiarte de vuelta al camino correcto.</p>  
+              
+            <div class="error-actions">  
+                <a href="/" class="btn btn-primary">Volver al inicio</a>  
+                <a href="/#blog" class="btn btn-secondary">Ver el blog</a>  
+            </div>  
+              
+            <div class="popular-sections">  
+                <h3>Explora nuestras secciones:</h3>  
+                <div class="section-links">  
+                    <a href="/#about" class="section-link">Nuestra Historia</a>  
+                    <a href="/#recursos" class="section-link">Recursos</a>  
+                    <a href="/#proyectos" class="section-link">Proyectos</a>  
+                    <a href="/#contacto" class="section-link">Contacto</a>  
+                </div>  
+            </div>  
+        </div>  
     </div>
 </body>
 </html>

@@ -3,7 +3,9 @@
     --azul-mineral: #2C3E50;
     --gris-calido: #EAE7DC;
     --terracota: #D97D54;
-    --terracota-hover: #BF6940;
+    --terracota-oscuro: #9c583b;
+    --terracota-hover: #7d4329;
+    --azul-mineral-hover: #202e3b;
     --mostaza: #E1B866;
     --blanco: #FFFFFF;
     --gris-claro: #F8F5F0;
@@ -12,6 +14,7 @@
 
     --fuentePrincipal: 'Poppins', sans-serif;
     --fuenteSecundaria: 'Lora', serif;
+    --fuenteQoute: 'Satisfy', cursive;
 }
 /* Reset */
 html {
@@ -44,6 +47,46 @@ h3 { font-size: 1.75rem; font-weight: 600; }
 h4 { font-size: 1.5rem; font-weight: 500; }
 
 /* ============================================
+   BOTONES
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--terracota-oscuro);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: var(--fuentePrincipal);
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-blue {
+    background: var(--azul-mineral);
+}
+
+.btn:hover {
+    background: var(--terracota-hover);
+}
+
+.btn-blue:hover {
+    background: var(--azul-mineral-hover);
+}
+
+.btn-secondary {
+    background: var(--blanco);
+    color: var(--terracota);
+    border: 2px solid var(--terracota);
+}
+
+.btn-secondary:hover {
+    background: var(--terracota);
+    color: var(--blanco);
+}
+
+/* ============================================
    HEADER
    ============================================ */
 .header {
@@ -71,14 +114,29 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 }
 
 .logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--blanco);
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: opacity 0.3s;
+    color: var(--blanco);
 }
 
+.logo-404 {
+    color: var(--azul-mineral);
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
+.logo-icon {
+    height: 7vw;
+    width: auto;
+    display: block;
+}
+
+/* Cuando el header hace scroll */
 .header.scrolled .logo {
     color: var(--azul-mineral);
 }
@@ -90,7 +148,7 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 }
 
 .nav-menu a {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--fuentePrincipal);
     font-weight: 500;
     color: var(--blanco);
     text-decoration: none;
@@ -112,7 +170,6 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     display: none;
     background: none;
     border: none;
-    font-size: 1.5rem;
     color: var(--blanco);
     cursor: pointer;
 }
@@ -124,19 +181,46 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 /* ============================================
    HERO
    ============================================ */
+
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(44, 62, 80, 0.5), rgba(44, 62, 80, 0.5)), 
-                url('../img/banner-inicio.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(44, 62, 80, 0.5), rgba(44, 62, 80, 0.5));
     color: var(--blanco);
     padding: 2rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/* Overlay oscuro sobre la imagen */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(44, 62, 80, 0.5), rgba(44, 62, 80, 0.5));
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
 }
 
@@ -146,7 +230,6 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 }
 
 .hero p {
-    font-size: 1.125rem;
     margin-bottom: 2rem;
 }
 
@@ -183,7 +266,7 @@ section {
 .persona-card {
     background: var(--blanco);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
@@ -198,40 +281,61 @@ section {
 
 .historia-image img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* ============================================
-   BOTONES
+   QUOTE
    ============================================ */
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: var(--terracota);
-    color: var(--blanco);
-    text-decoration: none;
-    border-radius: 4px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
+.quote {
+    font-family: var(--fuenteQoute);
+    font-size: 4rem;
+    text-align: center;
+    color: var(--azul-mineral);
+    margin: 4rem 0;
 }
 
-.btn:hover {
-    background: var(--terracota-hover);
-}
-
-.btn-secondary {
+/* ============================================
+   FORMULARIO
+   ============================================ */
+.contacto-container {
+    max-width: 600px;
+    margin: 0 auto;
     background: var(--blanco);
-    color: var(--terracota);
-    border: 2px solid var(--terracota);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.btn-secondary:hover {
-    background: var(--terracota);
-    color: var(--blanco);
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--azul-mineral);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    font-family: var(--fuenteSecundaria);
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--terracota);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
 /* ============================================
@@ -268,72 +372,16 @@ section {
 
 .blog-meta {
     color: var(--terracota);
-    font-size: 0.875rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
 .blog-content h3 {
-    font-size: 1.25rem;
     margin-bottom: 1rem;
 }
 
 .blog-content p {
     margin-bottom: 1rem;
-    font-size: 0.9375rem;
-}
-
-/* ============================================
-   QUOTE
-   ============================================ */
-.quote {
-    font-family: 'Satisfy', cursive;
-    font-size: 2rem;
-    text-align: center;
-    color: var(--azul-mineral);
-    margin: 4rem 0;
-}
-
-/* ============================================
-   FORMULARIO
-   ============================================ */
-.contacto-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--blanco);
-    padding: 3rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--azul-mineral);
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--borde);
-    border-radius: 4px;
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--terracota);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 120px;
 }
 
 /* ============================================
@@ -353,7 +401,6 @@ footer {
 
 .footer-text {
     margin-bottom: 2rem;
-    font-size: 1.125rem;
 }
 
 .social-links {
@@ -611,6 +658,9 @@ footer {
     margin-bottom: 2rem;
 }
 
+/* ============================================
+   404 PAGE
+   ============================================ */
 .error-404-page {
     min-height: 100vh;
     display: flex;
@@ -623,10 +673,6 @@ footer {
 .error-content {
     max-width: 600px;
 }
-
-/* ============================================
-   404 PAGE
-   ============================================ */
 .error-404 {
     font-size: 8rem;
     font-weight: 700;
@@ -642,7 +688,78 @@ footer {
 }
 .error-text {
     margin-bottom: 2rem;
-    font-size: 1.125rem;
+}
+.popular-sections {  
+    margin-top: 3rem;  
+    padding-top: 2rem;  
+    border-top: 1px solid var(--borde);  
+}  
+  
+.popular-sections h3 {  
+    color: var(--azul-mineral);  
+    margin-bottom: 1rem;  
+    font-size: 1.25rem;  
+}  
+  
+.section-links {  
+    display: flex;  
+    flex-wrap: wrap;  
+    gap: 1rem;  
+    justify-content: center;  
+}  
+  
+.section-link {  
+    padding: 0.75rem 1.5rem;  
+    background: var(--gris-medio);  
+    color: var(--azul-mineral);  
+    text-decoration: none;  
+    border-radius: 5px;  
+    transition: all 0.3s ease;  
+    font-weight: 500;  
+}  
+  
+.section-link:hover {  
+    background: var(--terracota);  
+    color: var(--blanco);  
+} 
+/* Responsive para 404 */  
+@media (max-width: 768px) {  
+    .error-404 {  
+        font-size: 5rem;  
+    }  
+      
+    .error-message {  
+        font-size: 1.75rem;  
+    }  
+      
+    .error-actions {  
+        flex-direction: column;  
+        align-items: center;  
+    }  
+      
+    .section-links {  
+        flex-direction: column;  
+        align-items: center;  
+    }  
+      
+    .section-link {  
+        width: 200px;  
+        text-align: center;  
+    }  
+}  
+  
+@media (max-width: 544px) {  
+    .error-404 {  
+        font-size: 4rem;  
+    }  
+      
+    .error-message {  
+        font-size: 1.5rem;  
+    }  
+      
+    .error-text {  
+        font-size: 1rem;  
+    }  
 }
 
 /* ============================================
