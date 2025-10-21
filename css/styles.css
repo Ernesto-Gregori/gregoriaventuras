@@ -42,7 +42,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 2.5rem; }
+@media (max-width: 921px) {
+    h1 { font-size: 2.25rem; }
+}
+@media (max-width: 544px) {
+    h1 { font-size: 2rem; }
+}
+
 h2 { font-size: 2rem; font-weight: 600; }
+@media (max-width: 921px) {
+    h2 { font-size: 1.75rem; }
+}
+@media (max-width: 544px) {
+    h2 { font-size: 1.6rem; }
+}
 h3 { font-size: 1.75rem; font-weight: 600; }
 h4 { font-size: 1.5rem; font-weight: 500; }
 
@@ -135,16 +148,42 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     width: auto;
     display: block;
 }
-
+@media (max-width: 921px) {
+    .logo-icon {height: 15vw;}
+}
+@media (max-width: 544px) {
+    .logo-icon {height: 20vw;}
+}
 /* Cuando el header hace scroll */
 .header.scrolled .logo {
     color: var(--azul-mineral);
+}
+
+@media (max-width: 921px) {
+    nav {display: none;} /* Ocultar completamente el nav en móvil */
+    nav.active {display: block;} /* Mostrar el nav cuando el menú está activo */
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
+}
+
+@media (max-width: 921px) {
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        margin: 0;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--azul-mineral);
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .nav-menu.active {display: flex;}
 }
 
 .nav-menu a {
@@ -156,9 +195,19 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     border-radius: 4px;
     transition: all 0.3s;
 }
-
+@media (max-width: 921px) {
+    .nav-menu a {
+        color: var(--blanco);
+        padding: 1rem;
+    }
+}
 .header.scrolled .nav-menu a {
     color: var(--azul-mineral);
+}
+@media (max-width: 921px) {
+    .header.scrolled .nav-menu a {
+        color: var(--blanco);
+    }
 }
 
 .nav-menu a:hover {
@@ -172,7 +221,16 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     border: none;
     color: var(--blanco);
     cursor: pointer;
+    font-size: 4rem; /* ← Aumenta este valor (antes: 1.5rem) */
+    padding: 0.75rem; /* ← Aumenta el área clickeable */
+    line-height: 1;
 }
+@media (max-width: 921px) {
+    .menu-toggle {display: block;}
+}   
+@media (max-width: 544px) {
+    .menu-toggle {font-size: 3rem;}
+} 
 
 .header.scrolled .menu-toggle {
     color: var(--azul-mineral);
@@ -195,6 +253,10 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     max-width: 100%;
     overflow: hidden;
 }
+@media (max-width: 544px) {
+    .hero {min-height: 90vh;}
+}
+
 .hero-image {
     position: absolute;
     top: 0;
@@ -241,6 +303,9 @@ section {
     max-width: 1240px;
     margin: 0 auto;
 }
+@media (max-width: 921px) {
+    section {padding: 3rem 1.5rem;}
+}
 
 .section-title {
     text-align: center;
@@ -255,6 +320,9 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     margin-top: 3rem;
+}
+@media (max-width: 921px) {
+    .historia-grid {grid-template-columns: 1fr;}
 }
 
 .historia-content {
@@ -291,6 +359,7 @@ section {
 .quote {
     font-family: var(--fuenteQoute);
     font-size: 4rem;
+    font-weight: 400;
     text-align: center;
     color: var(--azul-mineral);
     margin: 4rem 0;
@@ -307,7 +376,9 @@ section {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
+@media (max-width: 544px) {
+    .contacto-container {padding: 2rem 1.5rem;}
+}
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -347,6 +418,12 @@ textarea {
     gap: 2rem;
     margin-top: 3rem;
 }
+@media (max-width: 921px) {
+    .blog-grid {grid-template-columns: repeat(2, 1fr);}
+}
+@media (max-width: 544px) {
+    .blog-grid {grid-template-columns: 1fr;}
+}
 
 .blog-card {
     background: var(--blanco);
@@ -371,7 +448,7 @@ textarea {
 }
 
 .blog-meta {
-    color: var(--terracota);
+    color: var(--terracota-oscuro);
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
@@ -435,52 +512,6 @@ footer {
     background: var(--gris-medio);
     border-radius: 8px;
     margin-top: 2rem;
-}
-
-/* ============================================
-   RESPONSIVE - TABLET (max-width: 921px)
-   ============================================ */
-@media (max-width: 921px) {
-    h1 { font-size: 2.25rem; }
-    h2 { font-size: 1.75rem; }
-    
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--azul-mineral);
-        flex-direction: column;
-        padding: 1rem;
-        gap: 0;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-menu a {
-        color: var(--blanco);
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .historia-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .blog-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    section {
-        padding: 3rem 1.5rem;
-    }
 }
 
 /* ============================================
@@ -561,7 +592,6 @@ footer {
 
 .entry-container p {
     margin-bottom: 1.5rem;
-    font-size: 1.125rem;
     line-height: 1.8;
 }
 
@@ -605,10 +635,7 @@ footer {
     margin-left: 1.5rem;
 }
 
-.prayer-box li {
-    margin-bottom: 0.75rem;
-    font-size: 1.0625rem;
-}
+.prayer-box li {margin-bottom: 0.75rem;}
 
 .entry-navigation {
     display: grid;
@@ -681,7 +708,7 @@ footer {
     margin-bottom: 1rem;
 }
 .error-message {
-    font-family: 'Satisfy', cursive;
+    font-family: var(--fuenteQoute);
     font-size: 2rem;
     color: var(--azul-mineral);
     margin-bottom: 1.5rem;
@@ -723,7 +750,7 @@ footer {
     color: var(--blanco);  
 } 
 /* Responsive para 404 */  
-@media (max-width: 768px) {  
+@media (max-width: 921px) {  
     .error-404 {  
         font-size: 5rem;  
     }  
@@ -760,28 +787,4 @@ footer {
     .error-text {  
         font-size: 1rem;  
     }  
-}
-
-/* ============================================
-   RESPONSIVE - MÓVIL (max-width: 544px)
-   ============================================ */
-@media (max-width: 544px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.6rem; }
-
-    .blog-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        min-height: 90vh;
-    }
-
-    .contacto-container {
-        padding: 2rem 1.5rem;
-    }
-
-    .quote {
-        font-size: 1.5rem;
-    }
 }
