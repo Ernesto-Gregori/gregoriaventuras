@@ -16,7 +16,7 @@
     --fuenteSecundaria: 'Lora', serif;
     --fuenteQoute: 'Satisfy', cursive;
 }
-/* Reset */
+/* Reset y base*/
 html {
     font-size: 62.5%;
     box-sizing: border-box; /*Hack para Box Model*/
@@ -25,7 +25,6 @@ html {
     box-sizing: inherit;
 }
 
-/* Tipografía base */
 body {
     font-size: 1.6rem; /* 1 rem = 10px*/
     font-family: var(--fuenteSecundaria);
@@ -33,6 +32,8 @@ body {
     color: var(--azul-mineral);
     background-color: var(--gris-calido);
 }
+
+/* Tipografía base */
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuentePrincipal);
@@ -58,6 +59,19 @@ h2 { font-size: 2rem; font-weight: 600; }
 }
 h3 { font-size: 1.75rem; font-weight: 600; }
 h4 { font-size: 1.5rem; font-weight: 500; }
+
+/* Utilidades */
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+.flex { display: flex; }
+.font-xs { font-size: 1.2rem; }
+.grid { display: grid; }
+.text-center { text-align: center; }
+.none { display: none; }
+
+/* 5. Componentes (orden alfabético) */
 
 /* ============================================
    BOTONES
@@ -99,6 +113,11 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     color: var(--blanco);
 }
 
+a {
+    color: var(--terracota);
+    text-decoration: none;
+    transition: color 0.3s;
+}
 /* ============================================
    HEADER
    ============================================ */
@@ -121,13 +140,11 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     max-width: 1240px;
     margin: 0 auto;
     padding: 1rem 2rem;
-    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
@@ -165,7 +182,6 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 }
 
 .nav-menu {
-    display: flex;
     list-style: none;
     gap: 2rem;
 }
@@ -197,16 +213,15 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 }
 @media (max-width: 921px) {
     .nav-menu a {
-        color: var(--blanco);
         padding: 1rem;
     }
 }
 .header.scrolled .nav-menu a {
-    color: var(--azul-mineral);
+    color: var(--blanco);
 }
-@media (max-width: 921px) {
+@media (min-width: 922px) {
     .header.scrolled .nav-menu a {
-        color: var(--blanco);
+        color: var(--azul-mineral);
     }
 }
 
@@ -243,7 +258,6 @@ h4 { font-size: 1.5rem; font-weight: 500; }
 .hero {
     position: relative;
     min-height: 100vh;
-    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -307,28 +321,41 @@ section {
     section {padding: 3rem 1.5rem;}
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 3rem;
+.section-main {
+    background: var(--gris-medio); 
+    padding: 5rem 2rem;
 }
 
+.section-title {
+    margin-bottom: 3rem;
+}
+.section-parragraph {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
 /* ============================================
    NUESTRA HISTORIA
    ============================================ */
-.historia-grid {
-    display: grid;
+.nuestra-historia h3 {
+    margin: 4rem 0 2rem;
+}
+.historia {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     margin-top: 3rem;
 }
 @media (max-width: 921px) {
-    .historia-grid {grid-template-columns: 1fr;}
+    .historia {grid-template-columns: 1fr;}
 }
 
 .historia-content {
-    display: flex;
+    gap: 2rem;
+}
+@media (max-width: 921px) {
+    .historia-content {
     flex-direction: column;
     gap: 2rem;
+    }
 }
 
 .persona-card {
@@ -359,9 +386,6 @@ section {
 .quote {
     font-family: var(--fuenteQoute);
     font-size: 4rem;
-    font-weight: 400;
-    text-align: center;
-    color: var(--azul-mineral);
     margin: 4rem 0;
 }
 
@@ -481,7 +505,6 @@ footer {
 }
 
 .social-links {
-    display: flex;
     justify-content: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
@@ -519,7 +542,7 @@ footer {
    ============================================ */
 .entry-hero {
     min-height: 50vh;
-    display: flex;
+    max-width: 100%;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -533,7 +556,6 @@ footer {
 }
 
 .entry-meta {
-    display: flex;
     gap: 1rem;
     justify-content: center;
     margin-bottom: 1.5rem;
@@ -544,7 +566,7 @@ footer {
     background: rgba(255,255,255,0.2);
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--fuentePrincipal);
     font-weight: 500;
 }
 
@@ -556,7 +578,6 @@ footer {
 
 .entry-hero h1 {
     color: var(--blanco);
-    font-size: 2.5rem;
 }
 
 .featured-image {
@@ -573,6 +594,24 @@ footer {
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
+.breadcrumbs {
+    padding: 1rem 2rem;
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.breadcrumbs ol li a {
+    align-items: center;
+    gap: 0.3rem;
+}
+
 .entry-content {
     background: var(--blanco);
     margin-top: 3rem;
@@ -585,14 +624,105 @@ footer {
 }
 
 .entry-container h2 {
-    margin-top: 3rem;
     margin-bottom: 1.5rem;
-    color: var(--azul-mineral);
 }
 
 .entry-container p {
     margin-bottom: 1.5rem;
     line-height: 1.8;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/* Letra capitular */
+.entry-container p:first-of-type::first-letter {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    float: left;
+    margin: 0.1rem 0.15rem 0 0;
+    color: var(--terracota);
+}
+
+.section-divider {
+    width: 40px;
+    height: 3px;
+    background: var(--terracota);
+    margin: 3rem 0;
+}
+
+/* Reflexión destacada */
+.reflection-box {
+    background: var(--gris-medio);
+    border-left: 4px solid var(--terracota);
+    padding: 2rem;
+    margin: 3rem 0;
+    font-style: italic;
+    border-radius: 4px;
+}
+
+.reflection-box p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Compartir discreto */
+.share-section {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--gris-medio);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.share-section h3 {
+    margin-bottom: 1.5rem;
+}
+
+.share-buttons {
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: var(--blanco);
+    color: var(--azul-mineral);
+    text-decoration: none;
+    font-family: var(--fuentePrincipal);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    border: 1px solid var(--borde);
+    transition: all 0.3s;
+}
+
+.btn-share:hover {
+    background: var(--azul-mineral);
+    color: var(--blanco);
+    border-color: var(--azul-mineral);
+}
+
+@media (max-width: 544px) {
+    .share-buttons {
+        flex-direction: column;
+    }
+
+    .btn-share {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.btn-share span {
+    font-size: 1.2rem;
 }
 
 .entry-images-grid {
@@ -646,8 +776,17 @@ footer {
     border-top: 1px solid var(--borde);
 }
 
+@media (max-width: 544px) {
+    .entry-navigation {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-next {
+        text-align: left;
+    }
+}
+
 .nav-previous, .nav-next {
-    display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
@@ -657,17 +796,33 @@ footer {
 }
 
 .nav-subtitle {
-    font-size: 0.875rem;
+    font-size: 1.2rem;
     color: var(--terracota);
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--fuentePrincipal);
     font-weight: 500;
 }
 
 .nav-title {
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--azul-mineral);
 }
+
+.entry-update {
+    background: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+}
+
+.entry-update ul {
+    list-style: none;
+    padding: 0;
+}
+
+.entry-update ul li {margin-bottom: 1rem;}
+
+.entry-update ul li a {font-weight: 500;}
 
 .entry-cta {
     background: var(--gris-calido);
@@ -685,12 +840,23 @@ footer {
     margin-bottom: 2rem;
 }
 
+.entry-seo {
+    padding: 2.5rem 2rem;
+    background-color: var(--blanco);
+    max-width: none;
+    margin: 0;
+}
+
+.entry-seo-quote {
+    font-family: var(--fuenteQoute);
+    font-size: 3rem;
+}
+
 /* ============================================
    404 PAGE
    ============================================ */
 .error-404-page {
     min-height: 100vh;
-    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -729,7 +895,6 @@ footer {
 }  
   
 .section-links {  
-    display: flex;  
     flex-wrap: wrap;  
     gap: 1rem;  
     justify-content: center;  
@@ -749,7 +914,7 @@ footer {
     background: var(--terracota);  
     color: var(--blanco);  
 } 
-/* Responsive para 404 */  
+/* 6. Media queries consolidados */  
 @media (max-width: 921px) {  
     .error-404 {  
         font-size: 5rem;  
@@ -773,7 +938,7 @@ footer {
         width: 200px;  
         text-align: center;  
     }  
-}  
+}
   
 @media (max-width: 544px) {  
     .error-404 {  

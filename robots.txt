@@ -1,4 +1,20 @@
+# robots.txt para Gregori Aventuras
 User-agent: *
 Allow: /
 
+# Archivos que no necesitan indexarse
+Disallow: /js/
+Disallow: /css/
+Disallow: /gracias.html
+
+# Sitemap
 Sitemap: https://gregoriaventuras.xyz/sitemap.xml
+
+# Rastreadores específicos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

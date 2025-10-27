@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://gregoriaventuras.xyz/</loc>
-        <lastmod>2025-10-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://gregoriaventuras.xyz/compartir/julio-agosto-2025.html</loc>
-        <lastmod>2025-08-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página principal -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/banner-inicio.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori - Gregori Aventuras</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog: Julio-Agosto 2025 -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/julio-agosto-2025.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/blog-campamento.jpg</image:loc>
+      <image:title>Campamento de verano 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/diana-astronauta.jpg</image:loc>
+      <image:title>Diana en actividad del campamento</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-clase.jpg</image:loc>
+      <image:title>Ernesto enseñando a niños</image:title>
+    </image:image>
+  </url>
+  
 </urlset>
