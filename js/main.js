@@ -53,54 +53,54 @@ const pageUrl = encodeURIComponent(window.location.href);
 const pageTitle = encodeURIComponent(document.querySelector('h1').textContent);
 
 shareButtons.forEach(button => {
-button.addEventListener('click', (e) => {
-    e.preventDefault();
-    const shareType = button.getAttribute('data-share');
-    
-    let shareUrl = '';
-    
-    switch(shareType) {
-        case 'facebook':
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-            window.open(shareUrl, '_blank', 'width=600,height=400');
-            break;
-            
-        case 'whatsapp':
-            shareUrl = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
-            window.open(shareUrl, '_blank');
-            break;
-            
-        case 'twitter':
-            shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-            window.open(shareUrl, '_blank', 'width=600,height=400');
-            break;
-            
-        case 'copiar':
-            // Copiar al portapapeles
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                copyMessage.style.display = 'block';
-                setTimeout(() => {
-                    copyMessage.style.display = 'none';
-                }, 3000);
-            }).catch(err => {
-                console.error('Error al copiar:', err);
-                // Fallback para navegadores antiguos
-                const textArea = document.createElement('textarea');
-                textArea.value = window.location.href;
-                document.body.appendChild(textArea);
-                textArea.select();
-                try {
-                    document.execCommand('copy');
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const shareType = button.getAttribute('data-share');
+        
+        let shareUrl = '';
+        
+        switch(shareType) {
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+                break;
+                
+            case 'whatsapp':
+                shareUrl = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
+                window.open(shareUrl, '_blank');
+                break;
+                
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+                break;
+                
+            case 'copiar':
+                // Copiar al portapapeles
+                navigator.clipboard.writeText(window.location.href).then(() => {
                     copyMessage.style.display = 'block';
                     setTimeout(() => {
                         copyMessage.style.display = 'none';
                     }, 3000);
-                } catch(err) {
+                }).catch(err => {
                     console.error('Error al copiar:', err);
-                }
-                document.body.removeChild(textArea);
-            });
-            break;
-    }
-});
+                    // Fallback para navegadores antiguos
+                    const textArea = document.createElement('textarea');
+                    textArea.value = window.location.href;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyMessage.style.display = 'block';
+                        setTimeout(() => {
+                            copyMessage.style.display = 'none';
+                        }, 3000);
+                    } catch(err) {
+                        console.error('Error al copiar:', err);
+                    }
+                    document.body.removeChild(textArea);
+                });
+                break;
+        }
+    });
 });
