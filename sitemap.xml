@@ -36,6 +36,31 @@
       <image:loc>https://gregoriaventuras.xyz/img/neto-clase.jpg</image:loc>
       <image:title>Ernesto enseñando a niños</image:title>
     </image:image>
+    
+  </url>
+
+  <!-- Blog: Septiembre-octubre -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/aventura-estudio-septiembre-octubre.html</loc>
+    <lastmod>2025-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/blog-estudio-mision-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana junto con el grupo Tamaulipas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/diana-cocinando-800.jpg</image:loc>
+      <image:title>Diana preparando pupusas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-evangelismo-800.jpg</image:loc>
+      <image:title>Ernesto enseñando sobre evangelismo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/grupo-conexio-1200.jpg</image:loc>
+      <image:title>Grupo de jovenes de iglesia Conexión Vida</image:title>
+    </image:image>
   </url>
   
 </urlset>

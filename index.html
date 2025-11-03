@@ -42,20 +42,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">   
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="preload" href="css/styles.css?v=2.0" as="style">
-    <link rel="stylesheet" href="css/styles.css?v=2.0" media="print" onload="this.media='all'">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3TJJ64SL"></script>
+    <link rel="preload" href="css/styles.min.css" as="style">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.instagram.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <!-- Google Analytics con carga asíncrona mejorada -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
-        gtag('config', 'G-BC3TJJ64SL');
+        gtag('config', 'G-BC3TJJ64SL', {
+            'transport_type': 'beacon',
+            'page_path': location.pathname
+        });
     </script>
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://www.instagram.com">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3TJJ64SL"></script>
     <!-- Schema.org JSON-LD - Enfoque en la pareja -->
     <script type="application/ld+json">
     {
@@ -88,7 +91,7 @@
           "sameAs": [
             "https://www.instagram.com/dianaventuradegreg/"
           ],
-          "jobTitle": "Misionera y Estudiante de Teología",
+          "jobTitle": "Misionero y Estudiante de Teología",
           "spouse": {
             "@type": "Person",
             "name": "Ernesto Gregori"
@@ -196,11 +199,11 @@
     <!-- Header -->
     <header class="header">
         <div class="header-container flex">
-            <a href="/" class="logo flex">
+            <a href="/" class="logo flex" alt="Logo Gregori Aventuras" aria-label="Inicio - Gregori Aventuras">
                 <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.5 112.5"><defs><clipPath id="a"><path d="M53 29h133.84v62H53Zm0 0"/></clipPath><clipPath id="b"><path d="M0 0h134v62H0z"/></clipPath></defs><path fill="currentColor" d="M30.72 85.33c1.19.41 8.21-4.7 9.37-6.8 1.6-2.94-4.55-1.42-9.77-2.03S9.06 69.43 9.66 51.7c.6-17.72 20-17.45 21.4-17.38s16.71 3.04 16.71 18c0 14.95-11.3 11.92-14.17 11.45-2.88-.48-10.3-4.79-9.63-11.25s6.35-5.6 8.7-3.24c2.33 2.36 2.4 2.43 2.06 5.05-.33 2.63-1.13 3.17 1.14 4.31 2.27 1.15 5.35-2.35 4.88-5.45s-1.33-10.15-10.9-11.05c-11.24-1.06-13.99 12.68-10.56 19 4.68 8.62 32.26 16.19 35.37-7.75 3.32-25.54-39.59-40.53-51.35-5.73C1.12 67.76 15.49 80 30.72 85.33m0 0"/><g clip-path="url(#a)"><g fill="currentColor" clip-path="url(#b)" transform="translate(53 29)"><path d="M32.8 14.27q-.48-.85-1.35-1.31a4.5 4.5 0 0 0-2.06-.46q-2.04 0-3.27 1.35a5 5 0 0 0-1.22 3.56q0 2.4 1.28 3.74a4.7 4.7 0 0 0 3.55 1.32 4.3 4.3 0 0 0 2.63-.78 4.5 4.5 0 0 0 1.56-2.26h-5.33v-3.1h9.14v3.9a8.3 8.3 0 0 1-4.44 5.13 9 9 0 0 1-3.87.83 9 9 0 0 1-4.56-1.1 8 8 0 0 1-3.13-3.12 9 9 0 0 1-1.1-4.56q0-2.54 1.1-4.55a8 8 0 0 1 3.11-3.12A9 9 0 0 1 29.4 8.6q3.1 0 5.23 1.5a7 7 0 0 1 2.81 4.16ZM44.26 14.65a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.47-.65v4.45H47.4q-1.57 0-2.35.67-.8.67-.79 2.38v6.36h-4.2V12.35h4.2ZM63.5 18.99q0 .6-.08 1.23H53.9q.1 1.27.83 1.96.74.67 1.78.67 1.57 0 2.2-1.33h4.46a6.2 6.2 0 0 1-3.48 4.14q-1.34.6-3.02.61a7.4 7.4 0 0 1-3.6-.86 6 6 0 0 1-2.46-2.47 7.6 7.6 0 0 1-.88-3.73q0-2.14.88-3.74a6 6 0 0 1 2.43-2.45 7.5 7.5 0 0 1 3.63-.86q1.98 0 3.53.84a6 6 0 0 1 2.42 2.38q.88 1.54.88 3.6m-4.3-1.11q0-1.08-.75-1.72-.74-.64-1.84-.64-1.05 0-1.78.63-.72.6-.9 1.73ZM70.91 12.16q1.45 0 2.55.6 1.1.58 1.69 1.54v-1.95h4.2v13.69q0 1.9-.75 3.43a5.7 5.7 0 0 1-2.3 2.44 7.3 7.3 0 0 1-3.8.92 8 8 0 0 1-4.96-1.43 5.4 5.4 0 0 1-2.16-3.91h4.16q.18.79.92 1.25t1.83.45q1.29 0 2.08-.75.78-.75.78-2.4V24.1a4.8 4.8 0 0 1-4.24 2.17 5.6 5.6 0 0 1-3.08-.87 6 6 0 0 1-2.17-2.49 8 8 0 0 1-.8-3.72q0-2.11.8-3.72a5.7 5.7 0 0 1 5.25-3.31m4.24 7.05q0-1.57-.88-2.49-.87-.9-2.12-.9-1.27 0-2.14.9a3.4 3.4 0 0 0-.86 2.47q0 1.56.86 2.49.88.92 2.14.92 1.25 0 2.12-.9.88-.91.88-2.5M88.63 26.27a7.6 7.6 0 0 1-3.63-.86 6.4 6.4 0 0 1-2.53-2.47 7.3 7.3 0 0 1-.92-3.73q0-2.1.94-3.72a6.4 6.4 0 0 1 2.54-2.47 8 8 0 0 1 3.64-.86 8 8 0 0 1 3.64.86 6.3 6.3 0 0 1 2.55 2.47q.94 1.6.94 3.72 0 2.1-.96 3.72a6.4 6.4 0 0 1-2.57 2.48q-1.63.86-3.64.86m0-3.64q1.2 0 2.04-.88.86-.89.86-2.54t-.83-2.53q-.83-.9-2.03-.9-1.22 0-2.03.88t-.81 2.55q0 1.65.8 2.54.8.88 2 .88M102.24 14.65a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.47-.65v4.45h-1.16q-1.57 0-2.35.67-.8.67-.79 2.38v6.36h-4.2V12.35h4.2ZM110.67 10.93q-1.12 0-1.82-.64-.7-.66-.7-1.63 0-.99.7-1.62a2.6 2.6 0 0 1 1.82-.66q1.06 0 1.78.66.7.64.7 1.62 0 .97-.7 1.63-.71.64-1.78.64m2.09 1.42v13.72h-4.2V12.35ZM13 49.71H6.56l-1.03 3.05h-4.4L7.36 35.5h4.86l6.25 17.25h-4.45Zm-1.08-3.25-2.14-6.31-2.11 6.31ZM26.53 48.82l2.98-9.78h4.47l-4.86 13.72h-5.19l-4.87-13.72h4.5ZM48.67 45.68q0 .6-.08 1.23h-9.51q.1 1.27.82 1.96.75.67 1.79.67 1.58 0 2.18-1.33h4.47a6.2 6.2 0 0 1-3.48 4.14q-1.34.6-3.02.61a7.4 7.4 0 0 1-3.6-.86 6 6 0 0 1-2.46-2.47 7.6 7.6 0 0 1-.88-3.73q0-2.14.88-3.74a6 6 0 0 1 2.44-2.45 7.5 7.5 0 0 1 3.62-.86q1.98 0 3.53.84a6 6 0 0 1 2.43 2.38q.87 1.54.87 3.6m-4.3-1.11q0-1.08-.75-1.72-.73-.64-1.84-.64-1.05 0-1.78.63-.72.6-.9 1.73ZM59.23 38.9q2.4 0 3.84 1.56 1.45 1.56 1.45 4.28v8.02h-4.18V45.3q0-1.37-.72-2.12-.7-.76-1.9-.77-1.21 0-1.93.77a3 3 0 0 0-.7 2.12v7.46h-4.2V39.04h4.2v1.83q.62-.93 1.7-1.44a5.5 5.5 0 0 1 2.44-.53M75.08 49.2v3.56h-2.14a5.2 5.2 0 0 1-3.56-1.11q-1.29-1.12-1.28-3.66v-5.45h-1.67v-3.5h1.67v-3.35h4.2v3.35h2.75v3.5H72.3v5.5q0 .6.3.89.3.27.98.26ZM90.95 39.04v13.72h-4.2v-1.88q-.65.92-1.74 1.47-1.1.55-2.42.55a5.4 5.4 0 0 1-2.77-.69 4.8 4.8 0 0 1-1.87-2.03 7 7 0 0 1-.66-3.13v-8.01h4.17v7.45q0 1.38.7 2.14.72.75 1.93.75 1.23 0 1.93-.75.72-.75.72-2.14v-7.45ZM98.18 41.34a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.46-.65v4.45h-1.15q-1.58 0-2.36.67-.78.68-.78 2.38v6.36h-4.2V39.04h4.2ZM103.65 45.88q0-2.11.8-3.72a5.7 5.7 0 0 1 5.25-3.31q1.44 0 2.54.6 1.1.57 1.69 1.54v-1.95h4.2v13.72h-4.2v-1.94q-.63.95-1.72 1.55-1.1.6-2.55.59a5.5 5.5 0 0 1-3.05-.87 6 6 0 0 1-2.17-2.49 8 8 0 0 1-.8-3.72m10.28.02q0-1.57-.88-2.49-.88-.9-2.12-.9-1.27 0-2.14.9a3.4 3.4 0 0 0-.86 2.47q0 1.57.86 2.49.88.92 2.14.92 1.25 0 2.12-.9t.88-2.5M126.75 52.96q-1.8 0-3.2-.6a5.5 5.5 0 0 1-2.22-1.7 4.6 4.6 0 0 1-.9-2.4h4.15q.08.72.65 1.15.6.45 1.46.44.79 0 1.22-.3t.43-.8q0-.59-.62-.87-.6-.29-1.99-.62-1.47-.34-2.45-.72a4 4 0 0 1-1.7-1.22 3.3 3.3 0 0 1-.7-2.22q0-1.18.63-2.16a4.4 4.4 0 0 1 1.93-1.53 7 7 0 0 1 3.01-.56q2.58 0 4.06 1.28a5 5 0 0 1 1.7 3.4h-3.87a1.7 1.7 0 0 0-.62-1.15 2.2 2.2 0 0 0-1.4-.42q-.73 0-1.13.3a.9.9 0 0 0-.4.76q0 .6.63.9.64.3 1.95.57 1.53.41 2.49.78t1.69 1.24q.72.85.75 2.26 0 1.2-.68 2.16a4.5 4.5 0 0 1-1.93 1.48q-1.28.55-2.94.55m0 0"/></g></g>
                 </svg>
             </a>
-            <button class="menu-toggle" aria-label="Menú">☰</button>
+            <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
             <nav>
                 <ul class="nav-menu flex">
                     <li><a href="#nuestra-historia">Nuestra historia</a></li>
@@ -216,8 +219,21 @@
     <section class="hero flex">
         <div>
             <picture>
-                <source srcset="img/banner-inicio.webp" type="image/webp">
-                <img src="img/banner-inicio.jpg" alt="Campamento de verano" class="hero-image" class="blog-image" fetchpriority="high">
+                <source 
+                    media="(min-width: 1200px)" 
+                    srcset="img/banner-inicio-1200.webp"
+                    type="image/webp"
+                >
+                <source 
+                    media="(min-width: 768px)" 
+                    srcset="img/banner-inicio-800.webp"
+                    type="image/webp"
+                >
+                <source 
+                    srcset="img/banner-inicio-400.webp"
+                    type="image/webp"
+                >
+                <img src="img/banner-inicio-1200.jpg" alt="Banner de Neto y Diana" class="hero-image" width="1200" height="645" class="blog-image" fetchpriority="high">
             </picture>
         </div>
         <div class="hero-content">
@@ -233,12 +249,21 @@
       <div class="grid historia">
           <div class="historia-image">
               <picture>
+                <source 
+                    media="(max-width: 768px)" 
+                    srcset="img/neto-diana-400.webp"
+                    type="image/webp"
+                >
+                <source 
+                    srcset="img/neto-diana-800.webp"
+                    type="image/webp"
+                >
                   <source srcset="img/neto-diana.webp" type="image/webp">
-                  <img src="img/neto-diana.jpg" alt="Neto y Diana en su aventura" loading="lazy" decoding="async">
+                  <img src="img/neto-diana-800.jpg" alt="Neto y Diana en su aventura" width="800" height="533" loading="lazy" decoding="async">
               </picture>
           </div>
           <div>
-              <p>Somos <strong>Ernesto y Diana</strong>, una pareja apasionada por <strong>vivir aventuras y servir al Señor</strong>. Nos casamos en 2021 y desde entonces hemos estado viviendo esta aventura. Actualmente, estamos en el Instituto Bíblico de Palabra de Vida en México, una experiencia que nos ha desafiado y transformado. Nos encanta <strong>compartir nuestra fe</strong> una forma es a traves <a href="#nuestra-aventura" title="Lee las actualizaciones de nuestra aventura">nuestro compartir</a>, <strong>servir a las personas y a la niñez</strong> en <a href="#se-parte" title="Descubre nuestros proyectos">diferentes proyectos</a>, mientras caminamos juntos hacia lo que Dios tiene preparado.</p>
+              <p>Somos <strong>Ernesto y Diana</strong>, una pareja apasionada por <strong>vivir aventuras y servir al Señor</strong>. Nos casamos en 2021 y desde entonces hemos estado viviendo esta aventura. Actualmente, estamos en el Instituto Bíblico de Palabra de Vida en México, una experiencia que nos ha desafiado y transformado. Nos encanta <strong>compartir nuestra fe</strong> una forma es a traves <a href="#nuestra-aventura" aria-label="Lee las actualizaciones de nuestra aventura">nuestro compartir</a>, <strong>servir a las personas y a la niñez</strong> en <a href="#se-parte" aria-label="Descubre nuestros proyectos">diferentes proyectos</a>, mientras caminamos juntos hacia lo que Dios tiene preparado.</p>
           </div>
       </div>
 
@@ -248,13 +273,13 @@
           <div class="persona-card">
               <h4>Ernesto Gregori</h4>
               <p>Desde pequeño, mi vida religiosa parecía un camino recto. Pero en 2008, entendí que no se trataba de ser perfecto, sino de ser salvo. Fue un giro de 180 grados que me hizo comprender mi condición de pecador y el regalo de la cruz. El camino ha sido una aventura, llena de aprendizaje y crecimiento.</p>
-              <a href="https://www.instagram.com/neto_gregori/" target="_blank" class="btn btn-blue">Descubre más</a>
+              <a href="https://www.instagram.com/neto_gregori/" target="_blank" rel="noopener noreferrer" class="btn btn-blue" aria-label="Visita el Instagram de Ernesto Gregori">Descubre más</a>
           </div>
 
           <div class="persona-card">
               <h4>Diana de Gregori</h4>
               <p>A los 8 años, entendí que Jesús era el único camino al cielo. Años después, me di cuenta de que buscaba mi propia gloria y decidí poner a Cristo en primer lugar. Fue como empezar de nuevo, con más fuerza y propósito. Cada paso ha reafirmado que esta es la decisión más importante de mi vida.</p>
-              <a href="https://www.instagram.com/dianaventuradegreg/" target="_blank" class="btn btn-blue">Descubre más</a>
+              <a href="https://www.instagram.com/dianaventuradegreg/" target="_blank" rel="noopener noreferrer" class="btn btn-blue" aria-label="Visita el Instagram de Diana de Gregori">Descubre más</a>
           </div>
       </div>
 
@@ -265,19 +290,47 @@
     <section id="nuestra-aventura" class="section-main">
         <div class="container">
             <h2 class="text-center section-title">Nuestra aventura en movimiento: Compartimos el Camino</h2>
-            <p class="text-center section-parragraph">Te compartimos los últimos pasos de nuestra aventura. Descubre lo que hemos estado haciendo durante <a href="#nuestra-historia" title="Conoce nuestra historia">nuestros estudios</a> y <a href="#se-parte" title="Únete a nuestros proyectos">servicio</a>, y acompáñanos en oración.</p>
+            <p class="text-center section-parragraph">Te compartimos los últimos pasos de nuestra aventura. Descubre lo que hemos estado haciendo durante <a href="#nuestra-historia" aria-label="Conoce nuestra historia">nuestros estudios</a> y <a href="#se-parte" aria-label="Únete a nuestros proyectos">servicio</a>, y acompáñanos en oración.</p>
             
             <div class="blog-grid">
               <article class="blog-card">
                   <picture>
                       <source srcset="img/blog-campamento.webp" type="image/webp">
-                      <img src="img/blog-campamento.jpg" alt="Ernesto y Diana sirviendo en campamento - Gregori Aventuras" class="blog-image" loading="lazy" decoding="async">
+                      <img src="img/blog-campamento.jpg" alt="Ernesto y Diana sirviendo en campamento - Gregori Aventuras" width="800" height="600" class="blog-image" loading="lazy" decoding="async">
                   </picture>
                   <div class="blog-content">
                       <div class="blog-meta">30 agosto, 2025</div>
                       <h3>Nuestra Aventura en Julio y Agosto.</h3>
                       <p>Te compartimos un vistazo personal a nuestra aventura de fe en México. Descubre lo que Dios ha estado haciendo en...</p>
-                      <a href="compartir/julio-agosto-2025.html" class="btn">Leer más</a>
+                      <a href="compartir/julio-agosto-2025.html" class="btn" aria-label="Leer más sobre nuestra aventura de julio y agosto">Leer más</a>
+                  </div>
+              </article>
+              <article class="blog-card">
+                  <picture>
+                    <source 
+                        media="(min-width: 768px)" 
+                        srcset="img/blog-estudio-mision-800.webp"
+                        type="image/webp"
+                    >
+                    <source 
+                        srcset="img/blog-estudio-mision-400.webp"
+                        type="image/webp"
+                    >
+                    <img 
+                        src="img/blog-estudio-mision-800.jpg" 
+                        alt="Ernesto y Diana Gregori junto a los chicos del UME Tamaulipas - Gregori Aventura"
+                        width="800"
+                        height="430"
+                        class="blog-image" 
+                        loading="lazy" 
+                        decoding="async"
+                    >
+                  </picture>
+                  <div class="blog-content">
+                      <div class="blog-meta">03 Noviembre, 2025</div>
+                      <h3>Aventura de Estudio, Último Año.</h3>
+                      <p>Te compartimos los avances de nuestra aventura de estudioDescubre nuestro servicio en comunidad y los emocionantes...</p>
+                      <a href="compartir/aventura-estudio-septiembre-octubre.html" class="btn" aria-label="Leer más sobre nuestra aventura de Septiembre y Octubre">Leer más</a>
                   </div>
               </article>
             </div>
@@ -287,7 +340,7 @@
     <!-- Sé Parte (Proyectos) -->
     <section id="se-parte">
         <h2 class="text-center section-title">Sé parte de nuestra aventura</h2>
-        <p class="text-center section-parragraph">La fe es una aventura en compañía. Te invitamos a unirte a la nuestra y ser parte de <a href="#nuestra-historia" title="Lee nuestra historia">nuestra historia</a>. Aquí te compartimos las iniciativas en las que puedes acompañarnos, ya sea con tu oración o tu apoyo.</p>
+        <p class="text-center section-parragraph">La fe es una aventura en compañía. Te invitamos a unirte a la nuestra y ser parte de <a href="#nuestra-historia" aria-label="Lee nuestra historia">nuestra historia</a>. Aquí te compartimos las iniciativas en las que puedes acompañarnos, ya sea con tu oración o tu apoyo.</p>
         
         <div class="empty-state">
             <h3>Próximamente</h3>
@@ -299,7 +352,7 @@
     <section id="herramientas" class="section-main">
         <div class="container">
             <h2 class="text-center section-title">Herramientas para la aventura</h2>
-            <p class="text-center section-parragraph">En <a href="#nuestra-aventura" title="Lee sobre nuestra aventura">nuestra aventura</a>, hemos encontrado herramientas increíbles que nos ayudan a crecer en nuestra fe y a compartirla con otros. Aquí te compartimos algunos de nuestros recursos favoritos, desde apps de devocionales hasta herramientas evangelísticas que nos han sido de gran ayuda. Si tienes sugerencias, <a href="#conecta" title="Comparte con nosotros">nos encantaría conocerlas</a>.</p>
+            <p class="text-center section-parragraph">En <a href="#nuestra-aventura" aria-label="Lee sobre nuestra aventura">nuestra aventura</a>, hemos encontrado herramientas increíbles que nos ayudan a crecer en nuestra fe y a compartirla con otros. Aquí te compartimos algunos de nuestros recursos favoritos, desde apps de devocionales hasta herramientas evangelísticas que nos han sido de gran ayuda. Si tienes sugerencias, <a href="#conecta" aria-label="Comparte con nosotros">nos encantaría conocerlas</a>.</p>
             
             <div class="empty-state">
                 <h3>Próximamente</h3>
@@ -326,17 +379,17 @@
 
               <div class="form-group">
                   <label for="nombre">Nombre *</label>
-                  <input type="text" id="nombre" name="nombre" required placeholder="¿Cuál es tu nombre?">
+                  <input type="text" id="nombre" name="nombre" required placeholder="¿Cuál es tu nombre?" aria-required="true">
               </div>
 
               <div class="form-group">
                   <label for="email">Email *</label>
-                  <input type="email" id="email" name="email" required placeholder="Tu email">
+                  <input type="email" id="email" name="email" required placeholder="Tu email" aria-required="true">
               </div>
 
               <div class="form-group">
                   <label for="proposito">¿Cómo podemos ayudarte? *</label>
-                  <select id="proposito" name="proposito" required>
+                  <select id="proposito" name="proposito" required aria-required="true">
                       <option value="">Selecciona una opción</option>
                       <option value="apoyar">💡 Apoyar un proyecto</option>
                       <option value="colaborar">🤝 Colaborar con nosotros</option>
@@ -349,11 +402,11 @@
 
               <div class="form-group">
                   <label for="mensaje">Mensaje *</label>
-                  <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos tu mensaje, idea o cómo te gustaría colaborar con nuestros proyectos..."></textarea>
+                  <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos tu mensaje, idea o cómo te gustaría colaborar con nuestros proyectos..." aria-required="true"></textarea>
               </div>
 
               <input type="hidden" name="_next" value="https://gregoriaventuras.xyz/gracias.html">
-              <input type="text" name="_gotcha" class="none">
+              <input type="text" name="_gotcha" tabindex="-1" aria-hidden="true" class="none">
 
               <button type="submit" class="btn">Enviar mensaje ❤️</button>
             </form>
@@ -366,9 +419,9 @@
             <p class="footer-text">Un viaje en pareja, una pasión compartida. Te invitamos a caminar con nosotros<br>mientras exploramos lo que el Señor nos va enseñando.</p>
             
             <div class="social-links flex">
-                <a href="https://www.instagram.com/neto_gregori/" target="_blank" aria-label="Instagram Neto">📷</a>
-                <a href="https://www.instagram.com/dianaventuradegreg/" target="_blank" aria-label="Instagram Diana">📷</a>
-                <a href="mailto:netoydianagregori@gmail.com" aria-label="Email">✉️</a>
+                <a href="https://www.instagram.com/neto_gregori/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Ernesto Gregori">📷</a>
+                <a href="https://www.instagram.com/dianaventuradegreg/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Diana de Gregori">📷</a>
+                <a href="mailto:netoydianagregori@gmail.com" aria-label="Enviar correo electrónico">✉️</a>
             </div>
 
             <div class="copyright">
@@ -377,6 +430,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=1.0"></script>
+    <script defer src="js/main.min.js"></script>
 </body>
 </html>

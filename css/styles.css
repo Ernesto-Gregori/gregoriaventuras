@@ -33,6 +33,22 @@ body {
     background-color: var(--gris-calido);
 }
 
+a {
+    font-weight: 600;
+    color: var(--terracota-oscuro);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 /* Tipografía base */
 
 h1, h2, h3, h4, h5, h6 {
@@ -84,7 +100,6 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     text-decoration: none;
     border-radius: 4px;
     font-family: var(--fuentePrincipal);
-    font-weight: 500;
     transition: all 0.3s;
     border: none;
     cursor: pointer;
@@ -113,11 +128,6 @@ h4 { font-size: 1.5rem; font-weight: 500; }
     color: var(--blanco);
 }
 
-a {
-    color: var(--terracota);
-    text-decoration: none;
-    transition: color 0.3s;
-}
 /* ============================================
    HEADER
    ============================================ */
@@ -204,7 +214,7 @@ a {
 
 .nav-menu a {
     font-family: var(--fuentePrincipal);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--blanco);
     text-decoration: none;
     padding: 0.5rem 1rem;
@@ -372,12 +382,6 @@ section {
 
 .persona-card p {
     margin-bottom: 1.5rem;
-}
-
-.historia-image img {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* ============================================
@@ -588,12 +592,6 @@ footer {
     z-index: 10;
 }
 
-.featured-image img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
 .breadcrumbs {
     padding: 1rem 2rem;
 }
@@ -732,20 +730,8 @@ footer {
     margin: 3rem 0;
 }
 
-.entry-images-grid img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 .entry-footer-image {
     margin: 3rem 0;
-}
-
-.entry-footer-image img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .prayer-box {
@@ -952,4 +938,24 @@ footer {
     .error-text {  
         font-size: 1rem;  
     }  
+}
+
+/* ============================================
+   OPTIMIZACIONES ADICIONALES
+   ============================================ */
+
+/* Prevenir flash de contenido sin estilo */
+img:not([src]) {
+    visibility: hidden;
+}
+
+/* Smooth loading para imágenes lazy */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+img[loading="lazy"].loaded,
+img[loading="lazy"]:not([data-src]) {
+    opacity: 1;
 }
