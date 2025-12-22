@@ -250,3 +250,14 @@ if (typeof gtag !== 'undefined') {
         });
     }
 }
+
+const form = document.getElementById('supportForm');
+const submitBtn = document.getElementById('submitBtn');
+const loadingMessage = document.getElementById('loadingMessage');
+
+form.addEventListener('submit', function(e) {
+    // Deshabilitar botón y mostrar loading
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>⏳</span><span>Enviando...</span>';
+    loadingMessage.classList.add('active');
+});

@@ -5,7 +5,7 @@
   <!-- Página principal -->
   <url>
     <loc>https://gregoriaventuras.xyz/</loc>
-    <lastmod>2025-10-22</lastmod>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -58,8 +58,32 @@
       <image:title>Ernesto enseñando sobre evangelismo</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/grupo-conexio-1200.jpg</image:loc>
+      <image:loc>https://gregoriaventuras.xyz/img/grupo-conexion-1200.jpg</image:loc>
       <image:title>Grupo de jovenes de iglesia Conexión Vida</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog: noviembre-diciembre -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/luces-camino-noviembre-diciembre.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-clase-post-exilicos-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en clase post-exilicos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-vacaciones-800.jpg</image:loc>
+      <image:title>Ernesto y Diana en vacaciones</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-enseñando-800.jpg</image:loc>
+      <image:title>Ernesto Gregori enseñando en youth 4 life</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/posada-tercer-año-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en posada con grupo de terceraño</image:title>
     </image:image>
   </url>
   
