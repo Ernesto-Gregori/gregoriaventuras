@@ -86,5 +86,17 @@
       <image:title>Ernesto y Diana Gregori en posada con grupo de terceraño</image:title>
     </image:image>
   </url>
+
+  <!-- Blog: Enero-Febrero 2026 -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/enero-febrero-2026.html</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-clase-eclesiologia-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en clase de eclesiología</image:title>
+    </image:image>
+  </url>
   
 </urlset>
