@@ -163,4 +163,26 @@
     </image:image>
   </url>
 
+  <!-- ── HERRAMIENTAS ─────────────────────────────────────── -->
+<url>
+  <loc>https://gregoriaventuras.xyz/herramientas/devocionales.html</loc>
+  <lastmod>2026-05-03</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
+<url>
+  <loc>https://gregoriaventuras.xyz/herramientas/estudio-biblico.html</loc>
+  <lastmod>2026-05-03</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
+<url>
+  <loc>https://gregoriaventuras.xyz/herramientas/ministerio.html</loc>
+  <lastmod>2026-05-03</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
 </urlset>
