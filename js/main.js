@@ -1,28 +1,51 @@
 // ============================================
-// OPTIMIZACIONES DE RENDIMIENTO
+// main.js — Gregori Aventuras
+// Versión unificada para todos los templates.
+//
+// Orden:
+// 1. Referencias al DOM
+// 2. Menú móvil
+// 3. Header scroll
+// 4. Compartir en redes sociales
+// 5. Formulario de contacto (validación + envío)
+// 6. Google Analytics tracking
 // ============================================
 
-// Usar delegación de eventos para mejor rendimiento
-const doc = document;
+
+// ============================================
+// 1. REFERENCIAS AL DOM
+// ============================================
+const doc        = document;
 const menuToggle = doc.querySelector('.menu-toggle');
-const nav = doc.querySelector('nav');
-const navMenu = doc.querySelector('.nav-menu');
-const header = doc.querySelector('.header');
+const nav        = doc.querySelector('nav');
+const navMenu    = doc.querySelector('.nav-menu');
+const header     = doc.querySelector('.header');
+
+// El formulario existe solo en index.html
+// getElementById devuelve null si no existe — sin error
 const contactForm = doc.getElementById('form');
 
+// El botón de submit se busca dentro del form para no depender de un ID
+const submitBtn = contactForm
+    ? contactForm.querySelector('button[type="submit"]')
+    : null;
+
+// Toast de "enlace copiado" — se crea dinámicamente en la sección 4
+let copyToast = null;
+
+
 // ============================================
-// MENÚ MÓVIL
+// 2. MENÚ MÓVIL
 // ============================================
-if (menuToggle) {
+if (menuToggle && nav && navMenu) {
+
     menuToggle.addEventListener('click', () => {
         const isExpanded = nav.classList.toggle('active');
         navMenu.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', isExpanded);
+        menuToggle.setAttribute('aria-expanded', String(isExpanded));
     }, { passive: true });
-}
 
-// Cerrar menú al hacer clic en un enlace (delegación de eventos)
-if (navMenu) {
+    // Delegación: un solo listener en el <ul>
     navMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             nav.classList.remove('active');
@@ -30,103 +53,147 @@ if (navMenu) {
             menuToggle.setAttribute('aria-expanded', 'false');
         }
     });
+
+    // Cerrar al clic fuera del menú
+    doc.addEventListener('click', (e) => {
+        if (
+            nav.classList.contains('active') &&
+            !nav.contains(e.target) &&
+            !menuToggle.contains(e.target)
+        ) {
+            nav.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
 
-// ============================================
-// HEADER SCROLL (con throttle para rendimiento)
-// ============================================
-let scrollTimer;
-let lastScrollY = 0;
 
-const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    
-    // Solo actualizar si hay cambio significativo
-    if (Math.abs(currentScrollY - lastScrollY) > 50) {
-        if (currentScrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+// ============================================
+// 3. HEADER SCROLL
+// Usa requestAnimationFrame en lugar de setTimeout
+// para sincronizar con el ciclo de repintado del navegador.
+// Resultado: transición más suave y sin flickering.
+// ============================================
+if (header) {
+    let ticking = false;
+
+    const handleScroll = () => {
+        // Sin umbral de 50px — actualiza en cada scroll real
+        // El rAF ya controla la frecuencia de ejecución
+        header.classList.toggle('scrolled', window.scrollY > 100);
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        // Si ya hay un frame pendiente, no encolar otro
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
         }
-        lastScrollY = currentScrollY;
-    }
-};
+    }, { passive: true });
+}
 
-window.addEventListener('scroll', () => {
-    if (scrollTimer) return;
-    scrollTimer = setTimeout(() => {
-        handleScroll();
-        scrollTimer = null;
-    }, 100);
-}, { passive: true });
 
 // ============================================
-// SMOOTH SCROLL
-// ============================================
-doc.addEventListener('click', (e) => {
-    if (e.target.matches('a[href^="#"]')) {
-        e.preventDefault();
-        const targetId = e.target.getAttribute('href');
-        const target = doc.querySelector(targetId);
-        
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-});
-
-// ============================================
-// FORMULARIO DE CONTACTO
-// ============================================
-// Resetear campos al cargar la página
-window.addEventListener('load', () => {
-    if (contactForm) {
-        contactForm.reset();
-    }
-});
-
-// ============================================
-// COMPARTIR EN REDES SOCIALES
+// 4. COMPARTIR EN REDES SOCIALES
+// Solo se ejecuta si hay botones .btn-share en la página.
 // ============================================
 const shareButtons = doc.querySelectorAll('.btn-share');
-const copyMessage = doc.getElementById('copy-message');
 
 if (shareButtons.length > 0) {
-    const pageUrl = encodeURIComponent(window.location.href);
-    const pageTitle = encodeURIComponent(doc.querySelector('h1')?.textContent || 'Gregori Aventuras');
-    
+
+    // Crear el toast dinámicamente — no necesita estar en el HTML
+    copyToast = doc.createElement('div');
+    copyToast.id          = 'copy-toast';
+    copyToast.textContent = '✓ Enlace copiado';
+    copyToast.setAttribute('role', 'status');
+    copyToast.setAttribute('aria-live', 'polite');
+    Object.assign(copyToast.style, {
+        position:      'fixed',
+        bottom:        '2rem',
+        left:          '50%',
+        transform:     'translateX(-50%) translateY(20px)',
+        background:    '#2C3E50',
+        color:         '#EAE7DC',
+        padding:       '0.75rem 1.5rem',
+        borderRadius:  '50px',
+        fontFamily:    'Poppins, sans-serif',
+        fontSize:      '0.9rem',
+        fontWeight:    '600',
+        opacity:       '0',
+        transition:    'opacity 0.3s ease, transform 0.3s ease',
+        zIndex:        '9999',
+        pointerEvents: 'none'
+    });
+    doc.body.appendChild(copyToast);
+
+    let toastTimer = null;
+    function showCopyToast() {
+        if (toastTimer) clearTimeout(toastTimer);
+        copyToast.style.opacity   = '1';
+        copyToast.style.transform = 'translateX(-50%) translateY(0)';
+        toastTimer = setTimeout(() => {
+            copyToast.style.opacity   = '0';
+            copyToast.style.transform = 'translateX(-50%) translateY(20px)';
+        }, 3000);
+    }
+
+    // Fallback para navegadores sin navigator.clipboard
+    function fallbackCopy() {
+        const textArea          = doc.createElement('textarea');
+        textArea.value          = window.location.href;
+        textArea.style.position = 'fixed';
+        textArea.style.left     = '-9999px';
+        doc.body.appendChild(textArea);
+        textArea.select();
+        try {
+            doc.execCommand('copy');
+            showCopyToast();
+        } catch (err) {
+            console.error('Error al copiar enlace:', err);
+        }
+        doc.body.removeChild(textArea);
+    }
+
+    const pageUrl   = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(
+        doc.querySelector('h1')?.textContent?.trim() || 'Gregori Aventuras'
+    );
+
     shareButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            const shareType = button.getAttribute('data-share');
-            
-            let shareUrl = '';
-            
-            switch(shareType) {
+            const shareType = button.dataset.share;
+
+            switch (shareType) {
                 case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-                    window.open(shareUrl, '_blank', 'width=600,height=400,noopener,noreferrer');
+                    window.open(
+                        `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
+                        '_blank',
+                        'width=600,height=400,noopener,noreferrer'
+                    );
                     break;
-                    
                 case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
-                    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+                    window.open(
+                        `https://wa.me/?text=${pageTitle}%20${pageUrl}`,
+                        '_blank',
+                        'noopener,noreferrer'
+                    );
                     break;
-                    
                 case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-                    window.open(shareUrl, '_blank', 'width=600,height=400,noopener,noreferrer');
+                    window.open(
+                        `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`,
+                        '_blank',
+                        'width=600,height=400,noopener,noreferrer'
+                    );
                     break;
-                    
                 case 'copiar':
-                    // Usar API moderna de clipboard
                     if (navigator.clipboard) {
-                        navigator.clipboard.writeText(window.location.href)
-                            .then(() => showCopyMessage())
-                            .catch(() => fallbackCopy());
+                        navigator.clipboard
+                            .writeText(window.location.href)
+                            .then(showCopyToast)
+                            .catch(fallbackCopy);
                     } else {
                         fallbackCopy();
                     }
@@ -134,130 +201,212 @@ if (shareButtons.length > 0) {
             }
         });
     });
-    
-    // Función para mostrar mensaje de copiado
-    function showCopyMessage() {
-        if (copyMessage) {
-            copyMessage.style.display = 'block';
-            setTimeout(() => {
-                copyMessage.style.display = 'none';
-            }, 3000);
-        }
-    }
-    
-    // Fallback para navegadores antiguos
-    function fallbackCopy() {
-        const textArea = doc.createElement('textarea');
-        textArea.value = window.location.href;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-9999px';
-        doc.body.appendChild(textArea);
-        textArea.select();
-        
-        try {
-            doc.execCommand('copy');
-            showCopyMessage();
-        } catch(err) {
-            console.error('Error al copiar:', err);
-        }
-        
-        doc.body.removeChild(textArea);
-    }
 }
 
+
 // ============================================
-// GOOGLE ANALYTICS TRACKING
+// 5. FORMULARIO DE CONTACTO
+// Un solo bloque unificado: validación + envío.
+// CORRECCIÓN: antes había DOS bloques if (contactForm) separados
+// con listeners 'submit' distintos — generaba comportamiento
+// inesperado cuando el form tenía errores.
 // ============================================
-// Solo ejecutar si gtag está disponible
-if (typeof gtag !== 'undefined') {
-    
-    // Tracking de clicks en botones CTA (delegación de eventos)
-    doc.addEventListener('click', (e) => {
-        if (e.target.matches('.btn')) {
-            gtag('event', 'button_click', {
-                'event_category': 'engagement',
-                'event_label': e.target.textContent.trim(),
-                'value': 1
+if (contactForm && submitBtn) {
+
+    // Limpiar al cargar — evita que el navegador recuerde
+    // campos de sesiones anteriores.
+    // CORRECCIÓN: 'pageshow' en lugar de 'load' para funcionar
+    // también cuando el usuario vuelve con el botón "Atrás".
+    window.addEventListener('pageshow', () => {
+        contactForm.reset();
+        // Limpiar estado visual de validación al reiniciar
+        contactForm.querySelectorAll('.touched').forEach(el => {
+            el.classList.remove('touched');
+        });
+        contactForm.querySelectorAll('.field-error.visible').forEach(el => {
+            el.textContent = '';
+            el.classList.remove('visible');
+        });
+    });
+
+    // --- Mensajes de error personalizados por campo ---
+    const errorMessages = {
+        nombre:    { valueMissing: 'Por favor escribe tu nombre.' },
+        email:     {
+                     valueMissing: 'El email es necesario para responderte.',
+                     typeMismatch: 'Ese no parece un email válido. Ej: tu@email.com'
+                   },
+        proposito: { valueMissing: 'Selecciona una opción para que podamos ayudarte mejor.' },
+        mensaje:   { valueMissing: 'Cuéntanos algo — estamos aquí para escucharte.' }
+    };
+
+    // Valida un campo y muestra/oculta su .field-error
+    function validateField(input) {
+        const errorSpan = input.closest('.form-group')?.querySelector('.field-error');
+        if (!errorSpan) return;
+
+        const rules = errorMessages[input.name] || {};
+
+        if (input.validity.valueMissing && rules.valueMissing) {
+            errorSpan.textContent = rules.valueMissing;
+            errorSpan.classList.add('visible');
+            input.classList.add('touched');
+
+        } else if (input.validity.typeMismatch && rules.typeMismatch) {
+            errorSpan.textContent = rules.typeMismatch;
+            errorSpan.classList.add('visible');
+            input.classList.add('touched');
+
+        } else {
+            errorSpan.textContent = '';
+            errorSpan.classList.remove('visible');
+            input.classList.add('touched');
+        }
+    }
+
+    // Validar al salir del campo (blur)
+    contactForm.querySelectorAll('input, select, textarea').forEach(field => {
+        if (field.type === 'hidden' || field.type === 'checkbox') return;
+
+        field.addEventListener('blur', () => validateField(field));
+
+        // Revalidar mientras escribe (solo después del primer blur)
+        field.addEventListener('input', () => {
+            if (field.classList.contains('touched')) validateField(field);
+        });
+    });
+
+    // --- Submit unificado: valida + envía + trackea ---
+    contactForm.addEventListener('submit', (e) => {
+
+        // 1. Validar todos los campos requeridos
+        let firstErrorField = null;
+
+        contactForm.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+            validateField(field);
+            // CORRECCIÓN: guardar referencia directa al primer campo inválido
+            if (!field.validity.valid && !firstErrorField) {
+                firstErrorField = field;
+            }
+        });
+
+        // 2. Si hay errores: enfocar el primero y detener envío
+        if (firstErrorField) {
+            e.preventDefault();
+            firstErrorField.focus();
+            return; // Salir — no ejecutar el bloque de envío
+        }
+
+        // 3. Si no hay errores: feedback visual de envío
+        submitBtn.disabled   = true;
+        submitBtn.innerHTML  = `
+            <span role="status" aria-live="polite">
+                <svg class="spin" xmlns="http://www.w3.org/2000/svg"
+                     width="16" height="16" viewBox="0 0 16 16"
+                     fill="currentColor" aria-hidden="true">
+                    <path d="M8 1a7 7 0 1 0 7 7A7 7 0 0 0 8 1zm0 12a5 5 0 1 1 5-5 5 5 0 0 1-5 5z"
+                          opacity=".4"/>
+                    <path d="M15 8a7 7 0 0 0-7-7v2a5 5 0 0 1 5 5z"/>
+                </svg>
+                Enviando...
+            </span>
+        `;
+
+        // 4. Trackear envío en Analytics (solo si gtag disponible)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submission', {
+                event_category: 'contact',
+                event_label:    'formulario_contacto',
+                value:          1
             });
         }
-        
-        // Tracking de clicks en redes sociales
-        if (e.target.closest('.social-links a')) {
-            const link = e.target.closest('a');
-            const platform = link.getAttribute('aria-label') || 'social';
+    });
+}
+
+
+// ============================================
+// 6. GOOGLE ANALYTICS — EVENT TRACKING
+// Solo corre si gtag está disponible.
+// CORRECCIÓN: el tracking de form_submission se movió al
+// bloque del formulario (sección 5) para evitar duplicación.
+// ============================================
+if (typeof gtag !== 'undefined') {
+
+    // --- Clicks en botones CTA ---
+    doc.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn, .btn-marca, .btn-blue, .btn-blanco, .btn-secondary');
+        if (btn) {
+            gtag('event', 'button_click', {
+                event_category: 'engagement',
+                event_label:    btn.textContent.trim().substring(0, 50),
+                value:          1
+            });
+        }
+
+        // --- Clicks en redes sociales ---
+        const socialLink = e.target.closest('.social-links a');
+        if (socialLink) {
             gtag('event', 'social_click', {
-                'event_category': 'social',
-                'event_label': platform,
-                'value': 1
+                event_category: 'social',
+                event_label:    socialLink.getAttribute('aria-label') || 'social',
+                value:          1
+            });
+        }
+
+        // --- Clicks en botones de compartir ---
+        const shareBtn = e.target.closest('.btn-share');
+        if (shareBtn) {
+            gtag('event', 'share_click', {
+                event_category: 'sharing',
+                event_label:    shareBtn.dataset.share || 'unknown',
+                value:          1
             });
         }
     });
 
-    // Tracking de scroll depth (optimizado)
-    const scrollDepths = [25, 50, 75, 90];
+    // --- Scroll depth ---
+    // Registra 25%, 50%, 75% y 90% — una sola vez cada uno.
+    const scrollDepths  = [25, 50, 75, 90];
     const trackedDepths = new Set();
-    
-    let scrollTrackTimer;
-    
+    let scrollTrackTimer = null;
+
     window.addEventListener('scroll', () => {
         if (scrollTrackTimer) return;
-        
         scrollTrackTimer = setTimeout(() => {
-            const scrollPercentage = Math.round(
-                (window.scrollY / (doc.documentElement.scrollHeight - window.innerHeight)) * 100
-            );
-            
+            const docHeight = doc.documentElement.scrollHeight - window.innerHeight;
+            const scrollPct = docHeight > 0
+                ? Math.round((window.scrollY / docHeight) * 100)
+                : 0;
+
             scrollDepths.forEach(depth => {
-                if (scrollPercentage >= depth && !trackedDepths.has(depth)) {
+                if (scrollPct >= depth && !trackedDepths.has(depth)) {
                     trackedDepths.add(depth);
                     gtag('event', 'scroll_depth', {
-                        'event_category': 'engagement',
-                        'event_label': depth + '%',
-                        'value': depth
+                        event_category: 'engagement',
+                        event_label:    depth + '%',
+                        value:          depth
                     });
                 }
             });
-            
+
             scrollTrackTimer = null;
         }, 250);
     }, { passive: true });
 
-    // Tracking de tiempo en página (optimizado)
+    // --- Tiempo en página ---
     const timeMarkers = [
-        { seconds: 30, label: '30_seconds' },
-        { seconds: 60, label: '1_minute' },
-        { seconds: 180, label: '3_minutes' }
+        { seconds: 30,  label: '30_segundos' },
+        { seconds: 60,  label: '1_minuto'    },
+        { seconds: 180, label: '3_minutos'   }
     ];
-    
-    timeMarkers.forEach(marker => {
+
+    timeMarkers.forEach(({ seconds, label }) => {
         setTimeout(() => {
-            gtag('event', 'time_on_page', {
-                'event_category': 'engagement',
-                'event_label': marker.label,
-                'value': marker.seconds
+            gtag('event', 'tiempo_en_pagina', {
+                event_category: 'engagement',
+                event_label:    label,
+                value:          seconds
             });
-        }, marker.seconds * 1000);
+        }, seconds * 1000);
     });
-
-    // Tracking de envío de formulario
-    if (contactForm) {
-        contactForm.addEventListener('submit', () => {
-            gtag('event', 'form_submission', {
-                'event_category': 'contact',
-                'event_label': 'contact_form',
-                'value': 1
-            });
-        });
-    }
 }
-
-const form = document.getElementById('supportForm');
-const submitBtn = document.getElementById('submitBtn');
-const loadingMessage = document.getElementById('loadingMessage');
-
-form.addEventListener('submit', function(e) {
-    // Deshabilitar botón y mostrar loading
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span>⏳</span><span>Enviando...</span>';
-    loadingMessage.classList.add('active');
-});

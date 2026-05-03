@@ -1,245 +1,367 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Práctica - Gregori Aventuras</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --azul-mineral: #2C3E50;
-            --gris-calido: #EAE7DC;
-            --terracota: #D97D54;
-            --terracota-oscuro: #9c583b;
-            --terracota-hover: #7d4329;
-            --azul-mineral-hover: #202e3b;
-            --blanco: #FFFFFF;
-            --gris-medio: #F3F1EB;
-            --borde: #D6D1C4;
-            --fuentePrincipal: 'Poppins', sans-serif;
-            --fuenteSecundaria: 'Lora', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 62.5%; }
-        body { font-size: 1.6rem; font-family: var(--fuenteSecundaria); line-height: 1.6; color: var(--azul-mineral); background-color: var(--gris-calido); }
-        h1, h2, h3, h4 { font-family: var(--fuentePrincipal); font-weight: 700; color: var(--azul-mineral); line-height: 1.2; }
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; font-weight: 600; }
-        h3 { font-size: 1.75rem; font-weight: 600; }
-        @media (max-width: 921px) { h1 { font-size: 2.25rem; } h2 { font-size: 1.75rem; } }
-        @media (max-width: 544px) { h1 { font-size: 2rem; } h2 { font-size: 1.6rem; } }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía práctica para el crecimiento espiritual, creada por Ernesto y Diana Gregori desde su experiencia en el Instituto Bíblico. Descárgala gratis.">
+  <meta name="keywords" content="guía crecimiento espiritual, devocional diario, crecimiento espiritual cristiano, gregori aventuras, recursos fe">
+  <meta name="author" content="Ernesto y Diana Gregori">
+  <meta name="robots" content="index, follow">
+  <title>Guía Práctica para el Crecimiento Espiritual — Gregori Aventuras</title>
 
-        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--blanco); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header-container { max-width: 1240px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; text-decoration: none; color: var(--azul-mineral); }
-        .logo-icon { height: 7vw; width: auto; display: block; }
-        @media (max-width: 921px) { .logo-icon {height: 15vw;} }
-        @media (max-width: 544px) { .logo-icon {height: 20vw;} }
-        
-        .menu-toggle { display: none; background: none; border: none; color: var(--azul-mineral); cursor: pointer; font-size: 4rem; padding: 0.75rem; line-height: 1; }
-        @media (max-width: 921px) { .menu-toggle {display: block;} }
-        @media (max-width: 544px) { .menu-toggle {font-size: 3rem;} }
-        
-        nav { display: block; }
-        @media (max-width: 921px) { nav {display: none;} nav.active {display: block;} }
-        
-        .nav-menu { display: flex; list-style: none; gap: 2rem; }
-        @media (max-width: 921px) { .nav-menu { display: none; position: absolute; margin: 0; top: 100%; left: 0; width: 100%; background: var(--azul-mineral); flex-direction: column; padding: 1rem; } .nav-menu.active {display: flex;} }
-        
-        .nav-menu a { font-family: var(--fuentePrincipal); font-weight: 500; color: var(--azul-mineral); text-decoration: none; padding: 0.5rem 1rem; border-radius: 4px; transition: all 0.3s; }
-        @media (max-width: 921px) { .nav-menu a { color: var(--blanco); padding: 1rem; } }
-        .nav-menu a:hover { background: var(--terracota); color: var(--blanco); }
+  <link rel="canonical" href="https://gregoriaventuras.xyz/recursos/guia-crecimiento-espiritual.html">
 
-        .recurso-container { max-width: 1240px; margin: 100px auto 0; padding: 5rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        @media (max-width: 921px) { .recurso-container { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 2rem; } }
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://gregoriaventuras.xyz/recursos/guia-crecimiento-espiritual.html">
+  <meta property="og:title"        content="Guía Práctica para el Crecimiento Espiritual — Gregori Aventuras">
+  <meta property="og:description"  content="Devocionales, ejercicios y reflexiones para fortalecer tu relación con Dios. Descarga gratuita.">
+  <meta property="og:image"        content="https://gregoriaventuras.xyz/img/og-guia-espiritual.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name"    content="Gregori Aventuras">
+  <meta property="og:locale"       content="es_MX">
 
-        .recurso-preview { display: flex; justify-content: center; align-items: center; }
-        
-        .book-mockup { position: relative; width: 100%; max-width: 450px; aspect-ratio: 3/4; background: linear-gradient(135deg, #E8DCC8 0%, #D4C4A8 100%); border-radius: 8px; box-shadow: 20px 20px 40px rgba(0,0,0,0.15), -5px -5px 20px rgba(255,255,255,0.5); padding: 3rem 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; transform: perspective(1000px) rotateY(-5deg); transition: transform 0.3s; }
-        .book-mockup:hover { transform: perspective(1000px) rotateY(0deg); }
-        @media (max-width: 921px) { .book-mockup { transform: perspective(1000px) rotateY(0deg); } }
-        
-        .book-icon { font-size: 4rem; margin-bottom: 2rem; }
-        .book-title { font-family: var(--fuentePrincipal); font-size: 2rem; font-weight: 700; color: var(--azul-mineral); text-align: center; line-height: 1.3; }
-        @media (max-width: 544px) { .book-title { font-size: 1.5rem; } }
-        
-        .book-decorative { width: 80px; height: 80px; opacity: 0.15; }
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:url"         content="https://gregoriaventuras.xyz/recursos/guia-crecimiento-espiritual.html">
+  <meta name="twitter:title"       content="Guía Práctica para el Crecimiento Espiritual — Gregori Aventuras">
+  <meta name="twitter:description" content="Devocionales, ejercicios y reflexiones para fortalecer tu relación con Dios.">
+  <meta name="twitter:image"       content="https://gregoriaventuras.xyz/img/og-guia-espiritual.jpg">
 
-        .recurso-info { padding: 2rem; }
-        @media (max-width: 544px) { .recurso-info { padding: 1rem; } }
-        
-        .divider { width: 60px; height: 4px; background: var(--terracota); margin: 1.5rem 0 2rem; }
-        .recurso-description { font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem; }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png"     href="../favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon"             href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Gregori Aventuras">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#2C3E50">
 
-        .beneficios { background: var(--blanco); padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        @media (max-width: 544px) { .beneficios { padding: 1.5rem; } }
-        .beneficios h3 { margin-bottom: 1.5rem; }
-        
-        .beneficio-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
-        .beneficio-icon { font-size: 1.5rem; flex-shrink: 0; }
-        .beneficio-text { font-size: 1rem; line-height: 1.6; }
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-        .download-section { display: flex; flex-direction: column; gap: 1rem; }
-        .btn-download { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.3rem 2.5rem; background: var(--terracota-oscuro); color: var(--blanco); text-decoration: none; font-family: var(--fuentePrincipal); font-weight: 600; font-size: 1.2rem; border-radius: 50px; transition: all 0.3s; box-shadow: 0 6px 20px rgba(156, 88, 59, 0.3); }
-        .btn-download:hover { background: var(--terracota-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(156, 88, 59, 0.4); }
-        @media (max-width: 544px) { .btn-download { font-size: 1rem; padding: 1.1rem 2rem; } }
-        
-        .download-info { text-align: center; font-size: 0.9rem; color: var(--azul-mineral); opacity: 0.8; }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">
 
-        .recurso-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--borde); }
-        @media (max-width: 544px) { .recurso-stats { grid-template-columns: 1fr; } }
-        
-        .stat-box { text-align: center; }
-        .stat-number { font-family: var(--fuentePrincipal); font-size: 1.8rem; font-weight: 700; color: var(--terracota); display: block; margin-bottom: 0.3rem; }
-        .stat-label { font-size: 0.85rem; color: var(--azul-mineral); opacity: 0.8; }
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-        .value-section { max-width: 1240px; margin: 0 auto; padding: 5rem 2rem; }
-        @media (max-width: 921px) { .value-section { padding: 3rem 2rem; } }
-        
-        .value-content { background: var(--blanco); padding: 3rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        @media (max-width: 544px) { .value-content { padding: 2rem 1.5rem; } }
-        .value-content h2 { text-align: center; margin-bottom: 1.5rem; }
-        
-        .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
-        @media (max-width: 921px) { .value-grid { grid-template-columns: 1fr; } }
-        
-        .value-item { padding: 1.5rem; background: var(--gris-medio); border-radius: 8px; }
-        .value-item h4 { font-size: 1.2rem; margin-bottom: 0.8rem; }
-        .value-item p { line-height: 1.7; }
+  <!-- CSS: normalize → global -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="preload"    href="../css/global.css" as="style">
+  <link rel="stylesheet" href="../css/global.css">
 
-        footer { background: var(--blanco); padding: 3rem 2rem 1.5rem; border-top: 1px solid var(--borde); }
-        .footer-content { max-width: 1240px; margin: 0 auto; text-align: center; }
-        .footer-text { margin-bottom: 2rem; }
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
-        .social-links a { color: var(--azul-mineral); font-size: 1.5rem; transition: color 0.3s; text-decoration: none; }
-        .social-links a:hover { color: var(--terracota); }
-        .copyright { padding-top: 1.5rem; border-top: 1px solid var(--borde); color: var(--azul-mineral); }
-    </style>
+  <!--
+    CSS específico de este template.
+    Solo lo que NO existe en global.css — no duplicamos variables,
+    tipografía, header, footer ni botones.
+  -->
+  <link rel="stylesheet" href="../css/recurso.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3TJJ64SL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BC3TJJ64SL');
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Guía Práctica para el Crecimiento Espiritual",
+    "description": "Devocionales diarios, ejercicios prácticos y reflexiones para fortalecer tu relación con Dios.",
+    "author": [
+      { "@type": "Person", "name": "Ernesto Gregori" },
+      { "@type": "Person", "name": "Diana de Gregori" }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Gregori Aventuras",
+      "url": "https://gregoriaventuras.xyz"
+    },
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "url": "https://gregoriaventuras.xyz/recursos/guia-crecimiento-espiritual.html"
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio",       "item": "https://gregoriaventuras.xyz" },
+      { "@type": "ListItem", "position": 2, "name": "Herramientas", "item": "https://gregoriaventuras.xyz/#herramientas" },
+      { "@type": "ListItem", "position": 3, "name": "Guía de crecimiento espiritual", "item": "https://gregoriaventuras.xyz/recursos/guia-crecimiento-espiritual.html" }
+    ]
+  }
+  </script>
 </head>
+
 <body>
-    <header class="header">
-        <div class="header-container">
-            <a href="../index.html" class="logo">
-                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.5 112.5"><path fill="currentColor" d="M30.72 85.33c1.19.41 8.21-4.7 9.37-6.8 1.6-2.94-4.55-1.42-9.77-2.03S9.06 69.43 9.66 51.7c.6-17.72 20-17.45 21.4-17.38s16.71 3.04 16.71 18c0 14.95-11.3 11.92-14.17 11.45-2.88-.48-10.3-4.79-9.63-11.25s6.35-5.6 8.7-3.24c2.33 2.36 2.4 2.43 2.06 5.05-.33 2.63-1.13 3.17 1.14 4.31 2.27 1.15 5.35-2.35 4.88-5.45s-1.33-10.15-10.9-11.05c-11.24-1.06-13.99 12.68-10.56 19 4.68 8.62 32.26 16.19 35.37-7.75 3.32-25.54-39.59-40.53-51.35-5.73C1.12 67.76 15.49 80 30.72 85.33m0 0"/><g transform="translate(53 29)"><text x="0" y="20" font-family="Poppins" font-weight="700" font-size="20" fill="currentColor">Gregori</text><text x="0" y="50" font-family="Poppins" font-weight="700" font-size="20" fill="currentColor">Aventuras</text></g></svg>
-            </a>
-            <button class="menu-toggle" aria-label="Menú">☰</button>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="../index.html#nuestra-historia">Nuestra historia</a></li>
-                    <li><a href="../index.html#nuestra-aventura">Nuestra aventura</a></li>
-                    <li><a href="../index.html#se-parte">Sé parte</a></li>
-                    <li><a href="../index.html#herramientas">Herramientas</a></li>
-                    <li><a href="../index.html#conecta">Conecta</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <div class="recurso-container">
-        <div class="recurso-preview">
-            <div class="book-mockup">
-                <div class="book-icon">📖</div>
-                <h3 class="book-title">Guía Práctica para el Crecimiento Espiritual</h3>
-                <svg class="book-decorative" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <path d="M 30 50 Q 50 30 70 50 Q 50 70 30 50" fill="currentColor" opacity="0.3"/>
-                </svg>
-            </div>
-        </div>
+  <!-- HEADER — idéntico a todos los templates -->
+  <header class="header">
+    <div class="header-container flex">
+      <a href="../index.html" class="logo flex" aria-label="Inicio - Gregori Aventuras">
+        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.5 112.5"><defs><clipPath id="a"><path d="M53 29h133.84v62H53Zm0 0"/></clipPath><clipPath id="b"><path d="M0 0h134v62H0z"/></clipPath></defs><path fill="currentColor" d="M30.72 85.33c1.19.41 8.21-4.7 9.37-6.8 1.6-2.94-4.55-1.42-9.77-2.03S9.06 69.43 9.66 51.7c.6-17.72 20-17.45 21.4-17.38s16.71 3.04 16.71 18c0 14.95-11.3 11.92-14.17 11.45-2.88-.48-10.3-4.79-9.63-11.25s6.35-5.6 8.7-3.24c2.33 2.36 2.4 2.43 2.06 5.05-.33 2.63-1.13 3.17 1.14 4.31 2.27 1.15 5.35-2.35 4.88-5.45s-1.33-10.15-10.9-11.05c-11.24-1.06-13.99 12.68-10.56 19 4.68 8.62 32.26 16.19 35.37-7.75 3.32-25.54-39.59-40.53-51.35-5.73C1.12 67.76 15.49 80 30.72 85.33m0 0"/><g clip-path="url(#a)"><g fill="currentColor" clip-path="url(#b)" transform="translate(53 29)"><path d="M32.8 14.27q-.48-.85-1.35-1.31a4.5 4.5 0 0 0-2.06-.46q-2.04 0-3.27 1.35a5 5 0 0 0-1.22 3.56q0 2.4 1.28 3.74a4.7 4.7 0 0 0 3.55 1.32 4.3 4.3 0 0 0 2.63-.78 4.5 4.5 0 0 0 1.56-2.26h-5.33v-3.1h9.14v3.9a8.3 8.3 0 0 1-4.44 5.13 9 9 0 0 1-3.87.83 9 9 0 0 1-4.56-1.1 8 8 0 0 1-3.13-3.12 9 9 0 0 1-1.1-4.56q0-2.54 1.1-4.55a8 8 0 0 1 3.11-3.12A9 9 0 0 1 29.4 8.6q3.1 0 5.23 1.5a7 7 0 0 1 2.81 4.16ZM44.26 14.65a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.47-.65v4.45H47.4q-1.57 0-2.35.67-.8.67-.79 2.38v6.36h-4.2V12.35h4.2ZM63.5 18.99q0 .6-.08 1.23H53.9q.1 1.27.83 1.96.74.67 1.78.67 1.57 0 2.2-1.33h4.46a6.2 6.2 0 0 1-3.48 4.14q-1.34.6-3.02.61a7.4 7.4 0 0 1-3.6-.86 6 6 0 0 1-2.46-2.47 7.6 7.6 0 0 1-.88-3.73q0-2.14.88-3.74a6 6 0 0 1 2.43-2.45 7.5 7.5 0 0 1 3.63-.86q1.98 0 3.53.84a6 6 0 0 1 2.42 2.38q.88 1.54.88 3.6m-4.3-1.11q0-1.08-.75-1.72-.74-.64-1.84-.64-1.05 0-1.78.63-.72.6-.9 1.73ZM70.91 12.16q1.45 0 2.55.6 1.1.58 1.69 1.54v-1.95h4.2v13.69q0 1.9-.75 3.43a5.7 5.7 0 0 1-2.3 2.44 7.3 7.3 0 0 1-3.8.92 8 8 0 0 1-4.96-1.43 5.4 5.4 0 0 1-2.16-3.91h4.16q.18.79.92 1.25t1.83.45q1.29 0 2.08-.75.78-.75.78-2.4V24.1a4.8 4.8 0 0 1-4.24 2.17 5.6 5.6 0 0 1-3.08-.87 6 6 0 0 1-2.17-2.49 8 8 0 0 1-.8-3.72q0-2.11.8-3.72a5.7 5.7 0 0 1 5.25-3.31m4.24 7.05q0-1.57-.88-2.49-.87-.9-2.12-.9-1.27 0-2.14.9a3.4 3.4 0 0 0-.86 2.47q0 1.56.86 2.49.88.92 2.14.92 1.25 0 2.12-.9.88-.91.88-2.5M88.63 26.27a7.6 7.6 0 0 1-3.63-.86 6.4 6.4 0 0 1-2.53-2.47 7.3 7.3 0 0 1-.92-3.73q0-2.1.94-3.72a6.4 6.4 0 0 1 2.54-2.47 8 8 0 0 1 3.64-.86 8 8 0 0 1 3.64.86 6.3 6.3 0 0 1 2.55 2.47q.94 1.6.94 3.72 0 2.1-.96 3.72a6.4 6.4 0 0 1-2.57 2.48q-1.63.86-3.64.86m0-3.64q1.2 0 2.04-.88.86-.89.86-2.54t-.83-2.53q-.83-.9-2.03-.9-1.22 0-2.03.88t-.81 2.55q0 1.65.8 2.54.8.88 2 .88M102.24 14.65a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.47-.65v4.45h-1.16q-1.57 0-2.35.67-.8.67-.79 2.38v6.36h-4.2V12.35h4.2ZM110.67 10.93q-1.12 0-1.82-.64-.7-.66-.7-1.63 0-.99.7-1.62a2.6 2.6 0 0 1 1.82-.66q1.06 0 1.78.66.7.64.7 1.62 0 .97-.7 1.63-.71.64-1.78.64m2.09 1.42v13.72h-4.2V12.35ZM13 49.71H6.56l-1.03 3.05h-4.4L7.36 35.5h4.86l6.25 17.25h-4.45Zm-1.08-3.25-2.14-6.31-2.11 6.31ZM26.53 48.82l2.98-9.78h4.47l-4.86 13.72h-5.19l-4.87-13.72h4.5ZM48.67 45.68q0 .6-.08 1.23h-9.51q.1 1.27.82 1.96.75.67 1.79.67 1.58 0 2.18-1.33h4.47a6.2 6.2 0 0 1-3.48 4.14q-1.34.6-3.02.61a7.4 7.4 0 0 1-3.6-.86 6 6 0 0 1-2.46-2.47 7.6 7.6 0 0 1-.88-3.73q0-2.14.88-3.74a6 6 0 0 1 2.44-2.45 7.5 7.5 0 0 1 3.62-.86q1.98 0 3.53.84a6 6 0 0 1 2.43 2.38q.87 1.54.87 3.6m-4.3-1.11q0-1.08-.75-1.72-.73-.64-1.84-.64-1.05 0-1.78.63-.72.6-.9 1.73ZM59.23 38.9q2.4 0 3.84 1.56 1.45 1.56 1.45 4.28v8.02h-4.18V45.3q0-1.37-.72-2.12-.7-.76-1.9-.77-1.21 0-1.93.77a3 3 0 0 0-.7 2.12v7.46h-4.2V39.04h4.2v1.83q.62-.93 1.7-1.44a5.5 5.5 0 0 1 2.44-.53M75.08 49.2v3.56h-2.14a5.2 5.2 0 0 1-3.56-1.11q-1.29-1.12-1.28-3.66v-5.45h-1.67v-3.5h1.67v-3.35h4.2v3.35h2.75v3.5H72.3v5.5q0 .6.3.89.3.27.98.26ZM90.95 39.04v13.72h-4.2v-1.88q-.65.92-1.74 1.47-1.1.55-2.42.55a5.4 5.4 0 0 1-2.77-.69 4.8 4.8 0 0 1-1.87-2.03 7 7 0 0 1-.66-3.13v-8.01h4.17v7.45q0 1.38.7 2.14.72.75 1.93.75 1.23 0 1.93-.75.72-.75.72-2.14v-7.45ZM98.18 41.34a5.5 5.5 0 0 1 1.83-1.79 5 5 0 0 1 2.46-.65v4.45h-1.15q-1.58 0-2.36.67-.78.68-.78 2.38v6.36h-4.2V39.04h4.2ZM103.65 45.88q0-2.11.8-3.72a5.7 5.7 0 0 1 5.25-3.31q1.44 0 2.54.6 1.1.57 1.69 1.54v-1.95h4.2v13.72h-4.2v-1.94q-.63.95-1.72 1.55-1.1.6-2.55.59a5.5 5.5 0 0 1-3.05-.87 6 6 0 0 1-2.17-2.49 8 8 0 0 1-.8-3.72m10.28.02q0-1.57-.88-2.49-.88-.9-2.12-.9-1.27 0-2.14.9a3.4 3.4 0 0 0-.86 2.47q0 1.57.86 2.49.88.92 2.14.92 1.25 0 2.12-.9t.88-2.5M126.75 52.96q-1.8 0-3.2-.6a5.5 5.5 0 0 1-2.22-1.7 4.6 4.6 0 0 1-.9-2.4h4.15q.08.72.65 1.15.6.45 1.46.44.79 0 1.22-.3t.43-.8q0-.59-.62-.87-.6-.29-1.99-.62-1.47-.34-2.45-.72a4 4 0 0 1-1.7-1.22 3.3 3.3 0 0 1-.7-2.22q0-1.18.63-2.16a4.4 4.4 0 0 1 1.93-1.53 7 7 0 0 1 3.01-.56q2.58 0 4.06 1.28a5 5 0 0 1 1.7 3.4h-3.87a1.7 1.7 0 0 0-.62-1.15 2.2 2.2 0 0 0-1.4-.42q-.73 0-1.13.3a.9.9 0 0 0-.4.76q0 .6.63.9.64.3 1.95.57 1.53.41 2.49.78t1.69 1.24q.72.85.75 2.26 0 1.2-.68 2.16a4.5 4.5 0 0 1-1.93 1.48q-1.28.55-2.94.55m0 0"/></g></g></svg>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+      <nav>
+        <ul class="nav-menu flex">
+          <li><a href="../index.html#nuestra-historia">Nuestra historia</a></li>
+          <li><a href="../index.html#nuestra-aventura">Nuestra aventura</a></li>
+          <li><a href="../index.html#se-parte">Sé parte</a></li>
+          <li><a href="../index.html#herramientas">Herramientas</a></li>
+          <li><a href="../index.html#conecta">Conecta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <div class="recurso-info">
-            <h1>Guía Práctica para el Crecimiento Espiritual</h1>
-            <div class="divider"></div>
-            
-            <p class="recurso-description">Sumérgete en un viaje profundo de crecimiento espiritual. Esta guía te llevará paso a paso a través de prácticas, reflexiones y herramientas que fortalecerán tu relación con Dios y transformarán tu vida diaria.</p>
-            
-            <p class="recurso-description">Hemos creado esta guía con amor, basándonos en nuestra propia experiencia y lo que hemos aprendido en el camino.</p>
+  <!-- BREADCRUMBS -->
+  <nav aria-label="Ruta de navegación" class="breadcrumbs entry-container" style="margin-top: 80px;">
+    <ol class="flex font-xs">
+      <li>
+        <a href="../index.html" class="flex">
+          <i class="bi bi-house-fill" aria-hidden="true"></i>
+          <span>Inicio</span>
+        </a>
+      </li>
+      <li aria-hidden="true">/</li>
+      <li>
+        <a href="../index.html#herramientas" class="flex">
+          <i class="bi bi-tools" aria-hidden="true"></i>
+          <span>Herramientas</span>
+        </a>
+      </li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">Guía de crecimiento espiritual</li>
+    </ol>
+  </nav>
 
-            <div class="beneficios">
-                <h3>✨ Lo que encontrarás dentro</h3>
-                <div class="beneficio-item">
-                    <span class="beneficio-icon">📖</span>
-                    <span class="beneficio-text"><strong>Devocionales diarios</strong> para conectar con Dios cada mañana</span>
-                </div>
-                <div class="beneficio-item">
-                    <span class="beneficio-icon">🎯</span>
-                    <span class="beneficio-text"><strong>Ejercicios prácticos</strong> que puedes aplicar inmediatamente</span>
-                </div>
-                <div class="beneficio-item">
-                    <span class="beneficio-icon">💭</span>
-                    <span class="beneficio-text"><strong>Preguntas de reflexión</strong> para profundizar tu comprensión</span>
-                </div>
-                <div class="beneficio-item">
-                    <span class="beneficio-icon">🌱</span>
-                    <span class="beneficio-text"><strong>Plan de crecimiento</strong> personalizable a tu ritmo</span>
-                </div>
-            </div>
+  <!-- CONTENIDO PRINCIPAL — grid de dos columnas -->
+  <main class="recurso-container">
 
-            <div class="download-section">
-                <a href="#" class="btn-download">
-                    <span>♥</span>
-                    <span>DESCARGAR AHORA GRATIS</span>
-                </a>
-                <p class="download-info">📄 PDF descargable • 32 páginas • Sin registro requerido</p>
-            </div>
+    <!-- Columna izquierda: mockup visual del recurso -->
+    <div class="recurso-preview">
+      <div class="book-mockup">
+        <!--
+          Ícono central del mockup — Bootstrap Icon en lugar de emoji.
+          bi-journal-bookmark-fill evoca un diario devocional,
+          más preciso que bi-book para el contenido de esta guía.
+        -->
+        <i class="bi bi-journal-bookmark-fill recurso-mockup-icon" aria-hidden="true"></i>
 
-            <div class="recurso-stats">
-                <div class="stat-box">
-                    <span class="stat-number">+500</span>
-                    <span class="stat-label">Descargas</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">32</span>
-                    <span class="stat-label">Páginas</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Gratis</span>
-                </div>
-            </div>
-        </div>
+        <h2 class="book-title">Guía Práctica para el Crecimiento Espiritual</h2>
+
+        <!--
+          SVG decorativo — mantenemos la forma orgánica original
+          porque refuerza el tono "natural, de camino" de la marca.
+          Solo ajustamos el color al terracota de la identidad visual.
+        -->
+        <svg class="book-decorative" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M 30 50 Q 50 30 70 50 Q 50 70 30 50" fill="currentColor" opacity="0.3"/>
+        </svg>
+      </div>
     </div>
 
-    <section class="value-section">
-        <div class="value-content">
-            <h2>¿Por qué descargar esta guía?</h2>
-            <div class="value-grid">
-                <div class="value-item">
-                    <h4>📚 Contenido probado</h4>
-                    <p>Cada ejercicio y reflexión viene de nuestra experiencia personal en el Instituto Bíblico y nuestro caminar diario con Dios.</p>
-                </div>
-                <div class="value-item">
-                    <h4>🎯 Práctico y aplicable</h4>
-                    <p>No solo teoría: encontrarás pasos concretos que puedes implementar hoy mismo en tu vida espiritual.</p>
-                </div>
-                <div class="value-item">
-                    <h4>💝 Completamente gratuito</h4>
-                    <p>Creemos que los recursos para el crecimiento espiritual deben estar al alcance de todos. Sin costo, sin registro complicado.</p>
-                </div>
-                <div class="value-item">
-                    <h4>🌟 Para todos los niveles</h4>
-                    <p>Ya seas nuevo en la fe o tengas años caminando con Dios, esta guía tiene algo valioso para ti.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Columna derecha: información y descarga -->
+    <div class="recurso-info">
+      <h1>Guía Práctica para el Crecimiento Espiritual</h1>
 
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">Un viaje en pareja, una pasión compartida. Te invitamos a caminar con nosotros<br>mientras exploramos lo que el Señor nos va enseñando.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/neto_gregori/" target="_blank" aria-label="Instagram Neto">📷</a>
-                <a href="https://www.instagram.com/dianaventuradegreg/" target="_blank" aria-label="Instagram Diana">📷</a>
-                <a href="mailto:netoydianagregori@gmail.com" aria-label="Email">✉️</a>
-            </div>
-            <div class="copyright">
-                <p>Copyright © 2025 gregori aventuras | Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+      <!-- Divisor terracota — igual que en template-proyectos -->
+      <div class="recurso-divider"></div>
 
-    <script src="js/main.js?v=1.0"></script>
+      <p class="recurso-description">
+        Hemos reunido en esta guía lo que hemos aprendido en nuestro propio caminar: ejercicios, reflexiones y herramientas prácticas que nos han ayudado a fortalecer nuestra relación con Dios en el día a día.
+      </p>
+      <p class="recurso-description">
+        La creamos con amor, desde nuestra experiencia en el Instituto Bíblico y el servicio con jóvenes y niños, porque creemos que estos recursos deben estar al alcance de todos.
+      </p>
+
+      <!-- Beneficios — Bootstrap Icons en lugar de emojis -->
+      <div class="beneficios box">
+        <h3>Lo que encontrarás dentro</h3>
+
+        <div class="beneficio-item">
+          <i class="bi bi-sunrise-fill beneficio-icon" aria-hidden="true"></i>
+          <span class="beneficio-text">
+            <strong>Devocionales diarios</strong> para conectar con Dios cada mañana
+          </span>
+        </div>
+        <div class="beneficio-item">
+          <i class="bi bi-pencil-square beneficio-icon" aria-hidden="true"></i>
+          <span class="beneficio-text">
+            <strong>Ejercicios prácticos</strong> que puedes aplicar desde hoy
+          </span>
+        </div>
+        <div class="beneficio-item">
+          <i class="bi bi-chat-quote-fill beneficio-icon" aria-hidden="true"></i>
+          <span class="beneficio-text">
+            <strong>Preguntas de reflexión</strong> para profundizar tu comprensión
+          </span>
+        </div>
+        <div class="beneficio-item">
+          <i class="bi bi-arrow-up-circle-fill beneficio-icon" aria-hidden="true"></i>
+          <span class="beneficio-text">
+            <strong>Plan de crecimiento</strong> personalizable a tu ritmo
+          </span>
+        </div>
+      </div>
+
+      <!-- Descarga -->
+      <div class="download-section">
+        <!--
+          CAMBIO DE TONO: "DESCARGAR AHORA GRATIS" (agresivo, comercial)
+          → "Descargar la guía — es gratis" (cálido, honesto, marca)
+          El botón usa .btn-marca que ya existe en global.css.
+          
+          ATENCIÓN: Cuando tengas el PDF listo, reemplaza href="#"
+          por la ruta real: href="../recursos/guia-crecimiento.pdf"
+        -->
+        <a href="#" class="btn-marca recurso-btn-download">
+          <i class="bi bi-download" aria-hidden="true"></i>
+          Descargar la guía — es gratis
+        </a>
+        <p class="download-info font-xs">
+          <i class="bi bi-file-earmark-pdf-fill" style="color: var(--terracota);" aria-hidden="true"></i>
+          PDF descargable · 32 páginas · Sin registro requerido
+        </p>
+      </div>
+
+      <!--
+        CAMBIO: Se eliminó el stat "+500 descargas" porque es
+        un dato ficticio en una guía en desarrollo.
+        Genera desconfianza si alguien lo cuestiona.
+        Se reemplaza por dos stats reales y verificables.
+        Cuando tengas descargas reales, puedes restituir el tercero.
+      -->
+      <div class="recurso-stats">
+        <div class="stat-box">
+          <span class="stat-number">32</span>
+          <span class="stat-label">Páginas</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Gratis</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Para releer</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SECCIÓN DE VALOR — ¿por qué descargar? -->
+  <section class="value-section">
+    <div class="value-content box">
+      <h2 class="text-center">¿Por qué descargar esta guía?</h2>
+
+      <!--
+        CAMBIO: Emojis como títulos → Bootstrap Icons.
+        Los <h4> con ícono siguen el mismo patrón que
+        .box h3 en apoyo-mensual — coherencia visual.
+      -->
+      <div class="value-grid">
+
+        <div class="value-item">
+          <h4>
+            <i class="bi bi-patch-check-fill" style="color: var(--terracota);" aria-hidden="true"></i>
+            Contenido de nuestro propio camino
+          </h4>
+          <p>Cada ejercicio y reflexión viene de nuestra experiencia en el Instituto Bíblico y nuestro caminar diario con Dios. No es teoría: es lo que hemos vivido.</p>
+        </div>
+
+        <div class="value-item">
+          <h4>
+            <i class="bi bi-lightning-charge-fill" style="color: var(--terracota);" aria-hidden="true"></i>
+            Práctico y aplicable desde hoy
+          </h4>
+          <p>Encontrarás pasos concretos que puedes implementar en tu rutina espiritual, sin complicaciones ni conocimientos previos necesarios.</p>
+        </div>
+
+        <div class="value-item">
+          <h4>
+            <i class="bi bi-gift-fill" style="color: var(--terracota);" aria-hidden="true"></i>
+            Completamente gratuito
+          </h4>
+          <p>Creemos que los recursos para el crecimiento espiritual deben estar al alcance de todos. Sin costo, sin registro complicado, sin condiciones.</p>
+        </div>
+
+        <div class="value-item">
+          <h4>
+            <i class="bi bi-people-fill" style="color: var(--terracota);" aria-hidden="true"></i>
+            Para todos los niveles
+          </h4>
+          <p>Ya seas nuevo en la fe o lleves años caminando con Dios, esta guía tiene algo valioso para ti. El crecimiento no tiene límite de etapa.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final — conectar con la narrativa del sitio -->
+  <div class="cta-proyecto">
+    <h2>¿Te gustó la guía? Sigue la aventura</h2>
+    <p>Hay más recursos y reflexiones esperándote.<br>
+       Y si quieres contarnos cómo te fue, estamos aquí para escucharte.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="../index.html#herramientas" class="btn-blanco">
+        <i class="bi bi-tools" aria-hidden="true"></i>
+        Ver más herramientas
+      </a>
+      <a href="../index.html#conecta" class="btn-blanco" style="background: transparent; border: 2px solid rgba(255,255,255,0.6);">
+        <i class="bi bi-chat-heart-fill" aria-hidden="true"></i>
+        Escríbenos
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER — idéntico a todos los templates -->
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text">
+        Un viaje en pareja, una pasión compartida.<br>
+        Te invitamos a caminar con nosotros mientras exploramos lo que el Señor nos va enseñando.
+      </p>
+      <div class="social-links flex">
+        <a href="https://www.instagram.com/neto_gregori/"
+           target="_blank" rel="noopener noreferrer"
+           class="social-link"
+           aria-label="Instagram de Ernesto Gregori">
+          <i class="bi bi-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/dianaventuradegreg/"
+           target="_blank" rel="noopener noreferrer"
+           class="social-link"
+           aria-label="Instagram de Diana de Gregori">
+          <i class="bi bi-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:netoydianagregori@gmail.com"
+           class="social-link"
+           aria-label="Enviar correo electrónico">
+          <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="copyright">
+        <p>Copyright © 2026 Gregori Aventuras · Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.min.js"></script>
 </body>
 </html>

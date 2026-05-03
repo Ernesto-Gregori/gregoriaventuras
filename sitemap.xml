@@ -1,45 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Página principal -->
+
+  <!-- ============================================================
+       PÁGINA PRINCIPAL
+       changefreq: weekly — el index cambia con cada nueva entrada
+       lastmod: actualizar cada vez que se publique contenido nuevo
+       ============================================================ -->
   <url>
     <loc>https://gregoriaventuras.xyz/</loc>
-    <lastmod>2025-12-22</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/banner-inicio.jpg</image:loc>
+      <image:loc>https://gregoriaventuras.xyz/img/banner-inicio-1200.jpg</image:loc>
       <image:title>Ernesto y Diana Gregori - Gregori Aventuras</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/neto-diana.jpg</image:loc>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-800.jpg</image:loc>
       <image:title>Ernesto y Diana Gregori</image:title>
     </image:image>
   </url>
-  
-  <!-- Blog: Julio-Agosto 2025 -->
+
+  <!-- ============================================================
+       PROYECTO: Apoyo mensual — Pilar de Aventura
+       changefreq: monthly — contenido estable
+       ============================================================ -->
   <url>
-    <loc>https://gregoriaventuras.xyz/compartir/julio-agosto-2025.html</loc>
-    <lastmod>2025-08-30</lastmod>
+    <loc>https://gregoriaventuras.xyz/proyecto/apoyo-mensual-pilar-aventura.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/familia-gregori-caminado-juntos-1200.jpg</image:loc>
+      <image:title>Familia Gregori caminando juntos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-evangelismo-800.jpg</image:loc>
+      <image:title>Ernesto Gregori facilitando un taller de evangelismo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/diana-americanos-filter-of-hope-800.jpg</image:loc>
+      <image:title>Diana de Gregori en el evento de evangelismo con grupo de americanos: Filter of Hope</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================
+       COMPARTIR: Marzo-Abril 2026 (entrada más reciente)
+       ============================================================ -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/marzo-abril-2026.html</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-evento-estudiantil-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori sirviendo en el UME especial Tamaulipas</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://gregoriaventuras.xyz/img/blog-campamento.jpg</image:loc>
-      <image:title>Campamento de verano 2025</image:title>
+      <image:title>Ernesto y Diana Gregori junto a consejeros en el campamento de verano Bernal</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/diana-astronauta.jpg</image:loc>
-      <image:title>Diana en actividad del campamento</image:title>
+      <image:loc>https://gregoriaventuras.xyz/img/diana-americanos-filter-of-hope-800.jpg</image:loc>
+      <image:title>Diana de Gregori en el evento de evangelismo Filter of Hope</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/neto-clase.jpg</image:loc>
-      <image:title>Ernesto enseñando a niños</image:title>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-ensenando-jovenes-800.jpg</image:loc>
+      <image:title>Ernesto Gregori enseñando en Youth 4 Life</image:title>
     </image:image>
-    
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-gira-evangelistica-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en la gira evangelistica en Queretaro</image:title>
+    </image:image>
   </url>
 
-  <!-- Blog: Septiembre-octubre -->
+  <!-- ============================================================
+       COMPARTIR: Enero-Febrero 2026
+       ============================================================ -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/enero-febrero-2026.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-clase-eclesiologia-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en clase de eclesiologia</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================
+       COMPARTIR: Noviembre-Diciembre 2025
+       ============================================================ -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/luces-camino-noviembre-diciembre.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-clase-post-exilicos-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en clase post-exilicos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-vacaciones-800.jpg</image:loc>
+      <image:title>Ernesto y Diana en vacaciones</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-ensenando-800.jpg</image:loc>
+      <image:title>Ernesto Gregori enseñando en Youth 4 Life</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/posada-tercer-ano-1200.jpg</image:loc>
+      <image:title>Ernesto y Diana Gregori en posada con grupo de tercer ano</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================
+       COMPARTIR: Septiembre-Octubre 2025
+       ============================================================ -->
   <url>
     <loc>https://gregoriaventuras.xyz/compartir/aventura-estudio-septiembre-octubre.html</loc>
     <lastmod>2025-11-03</lastmod>
@@ -59,44 +137,30 @@
     </image:image>
     <image:image>
       <image:loc>https://gregoriaventuras.xyz/img/grupo-conexion-1200.jpg</image:loc>
-      <image:title>Grupo de jovenes de iglesia Conexión Vida</image:title>
+      <image:title>Grupo de jovenes de iglesia Conexion Vida</image:title>
     </image:image>
   </url>
 
-  <!-- Blog: noviembre-diciembre -->
+  <!-- ============================================================
+       COMPARTIR: Julio-Agosto 2025
+       ============================================================ -->
   <url>
-    <loc>https://gregoriaventuras.xyz/compartir/luces-camino-noviembre-diciembre.html</loc>
-    <lastmod>2025-12-22</lastmod>
+    <loc>https://gregoriaventuras.xyz/compartir/julio-agosto-2025.html</loc>
+    <lastmod>2025-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-clase-post-exilicos-1200.jpg</image:loc>
-      <image:title>Ernesto y Diana Gregori en clase post-exilicos</image:title>
+      <image:loc>https://gregoriaventuras.xyz/img/blog-campamento.jpg</image:loc>
+      <image:title>Campamento de verano 2025</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-vacaciones-800.jpg</image:loc>
-      <image:title>Ernesto y Diana en vacaciones</image:title>
+      <image:loc>https://gregoriaventuras.xyz/img/diana-astronauta.jpg</image:loc>
+      <image:title>Diana en actividad del campamento</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/neto-enseñando-800.jpg</image:loc>
-      <image:title>Ernesto Gregori enseñando en youth 4 life</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/posada-tercer-año-1200.jpg</image:loc>
-      <image:title>Ernesto y Diana Gregori en posada con grupo de terceraño</image:title>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-clase.jpg</image:loc>
+      <image:title>Ernesto ensenando a ninos</image:title>
     </image:image>
   </url>
 
-  <!-- Blog: Enero-Febrero 2026 -->
-  <url>
-    <loc>https://gregoriaventuras.xyz/compartir/enero-febrero-2026.html</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-clase-eclesiologia-1200.jpg</image:loc>
-      <image:title>Ernesto y Diana Gregori en clase de eclesiología</image:title>
-    </image:image>
-  </url>
-  
 </urlset>
