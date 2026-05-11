@@ -18,7 +18,7 @@
   <meta property="og:url" content="https://gregoriaventuras.xyz/">
   <meta property="og:title" content="Aventura en Compañía - Gregori Aventuras">
   <meta property="og:description" content="Somos Ernesto y Diana, una pareja que vive la aventura en compañía. Únete a nuestro viaje de fe.">
-  <meta property="og:image" content="https://gregoriaventuras.xyz/img/banner-inicio.jpg">
+  <meta property="og:image" content="https://gregoriaventuras.xyz/img/banner-inicio-1200.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Gregori Aventuras">
@@ -29,7 +29,7 @@
   <meta name="twitter:url" content="https://gregoriaventuras.xyz/">
   <meta name="twitter:title" content="Aventura en Compañía - Gregori Aventuras">
   <meta name="twitter:description" content="Somos Ernesto y Diana, una pareja que vive la aventura en compañía. Únete a nuestro viaje de fe.">
-  <meta name="twitter:image" content="https://gregoriaventuras.xyz/img/banner-inicio.jpg">
+  <meta name="twitter:image" content="https://gregoriaventuras.xyz/img/banner-inicio-1200.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
@@ -49,21 +49,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- AHORA (con Satisfy incluida) -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">
 
   <!--
     CAMBIO: Se agrega Bootstrap Icons como único sistema de íconos del sitio.
     Usamos CDN. Reemplaza los emojis del footer y estandariza íconos futuros.
     Documentación: https://icons.getbootstrap.com/
   -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="preload"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/fonts/bootstrap-icons.woff2?dd67030..."
+      as="font" type="font/woff2" crossorigin>
 
   <!-- CSS: normalize primero, luego tus estilos -->
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="preload" href="css/normalize.css" as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/normalize.css"></noscript>
   <link rel="preload"    href="css/global.min.css" as="style">
   <link rel="stylesheet" href="css/global.min.css">
 
   <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3TJJ64SL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -73,7 +78,6 @@
       'page_path': location.pathname
     });
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3TJJ64SL"></script>
 
   <!-- Schema.org JSON-LD — sin cambios funcionales -->
   <script type="application/ld+json">
