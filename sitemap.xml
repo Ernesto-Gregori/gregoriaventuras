@@ -46,20 +46,42 @@
   </url>
 
   <!-- ============================================================
-       COMPARTIR: Marzo-Abril 2026 (entrada más reciente)
+       COMPARTIR: Mayo-Junio (entrada más reciente)
+       ============================================================ -->
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/mayo-junio-2026.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/banner-viaje-ume-tamaulipas-1200.jpg.jpg</image:loc>
+      <image:title>Neto y Diana en supermach con las iglesias de Tamaulipas, México</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/diana-reunion-mujeres-800.jpg</image:loc>
+      <image:title>Diana de Gregori apoyando en el taller de discipulado mujeres</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-escuela-taller-800.jpg</image:loc>
+      <image:title>Neto Gregori dando un taller sobre identidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-ultima-clase-1200.jpg</image:loc>
+      <image:title>Neto y Diana Gregori cerrando ultima clase del Instituto Bíblico Palabra de Vida</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================
+       COMPARTIR: Marzo-Abril 2026
        ============================================================ -->
   <url>
     <loc>https://gregoriaventuras.xyz/compartir/marzo-abril-2026.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://gregoriaventuras.xyz/img/neto-diana-evento-estudiantil-1200.jpg</image:loc>
       <image:title>Ernesto y Diana Gregori sirviendo en el UME especial Tamaulipas</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/blog-campamento.jpg</image:loc>
-      <image:title>Ernesto y Diana Gregori junto a consejeros en el campamento de verano Bernal</image:title>
     </image:image>
     <image:image>
       <image:loc>https://gregoriaventuras.xyz/img/diana-americanos-filter-of-hope-800.jpg</image:loc>
