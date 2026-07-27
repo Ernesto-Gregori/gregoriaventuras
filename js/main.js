@@ -3,13 +3,90 @@
 // Versión unificada para todos los templates.
 //
 // Orden:
+// 0. Consentimiento de cookies
 // 1. Referencias al DOM
 // 2. Menú móvil
 // 3. Header scroll
 // 4. Compartir en redes sociales
-// 5. Formulario de contacto (validación + envío)
-// 6. Google Analytics tracking
+// 5. Formulario de contacto (validación + envío + Turnstile)
+// 6. Google Analytics tracking (solo con consentimiento)
 // ============================================
+
+
+// ============================================
+// 0. CONSENTIMIENTO DE COOKIES
+// ============================================
+const CONSENT_KEY = 'ga_consent';
+
+function analyticsAllowed() {
+    return localStorage.getItem(CONSENT_KEY) === 'granted';
+}
+
+function grantAnalyticsConsent() {
+    localStorage.setItem(CONSENT_KEY, 'granted');
+    if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage:         'denied'
+        });
+    }
+    hideCookieBanner();
+}
+
+function denyAnalyticsConsent() {
+    localStorage.setItem(CONSENT_KEY, 'denied');
+    if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+            analytics_storage: 'denied',
+            ad_storage:         'denied'
+        });
+    }
+    hideCookieBanner();
+}
+
+function hideCookieBanner() {
+    document.getElementById('cookie-consent')?.remove();
+}
+
+function initCookieBanner() {
+    if (localStorage.getItem(CONSENT_KEY)) {
+        if (analyticsAllowed() && typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                analytics_storage: 'granted',
+                ad_storage:         'denied'
+            });
+        }
+        return;
+    }
+
+    const banner = document.createElement('div');
+    banner.id = 'cookie-consent';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Consentimiento de cookies');
+    banner.innerHTML = `
+        <div class="cookie-inner">
+            <p>
+                Usamos cookies analíticas para mejorar el sitio.
+                <a href="${resolvePath('privacidad.html')}">Más información</a>
+            </p>
+            <div class="cookie-actions">
+                <button type="button" class="cookie-reject">Rechazar</button>
+                <button type="button" class="cookie-accept">Aceptar</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(banner);
+    banner.querySelector('.cookie-accept').addEventListener('click', grantAnalyticsConsent);
+    banner.querySelector('.cookie-reject').addEventListener('click', denyAnalyticsConsent);
+}
+
+function resolvePath(target) {
+    const path = window.location.pathname;
+    if (path.includes('/compartir/') || path.includes('/herramientas/') || path.includes('/proyecto/')) {
+        return '../' + target;
+    }
+    return target;
+}
 
 
 // ============================================
@@ -21,17 +98,14 @@ const nav        = doc.querySelector('nav');
 const navMenu    = doc.querySelector('.nav-menu');
 const header     = doc.querySelector('.header');
 
-// El formulario existe solo en index.html
-// getElementById devuelve null si no existe — sin error
 const contactForm = doc.getElementById('form');
-
-// El botón de submit se busca dentro del form para no depender de un ID
 const submitBtn = contactForm
     ? contactForm.querySelector('button[type="submit"]')
     : null;
 
-// Toast de "enlace copiado" — se crea dinámicamente en la sección 4
 let copyToast = null;
+
+initCookieBanner();
 
 
 // ============================================
@@ -45,7 +119,6 @@ if (menuToggle && nav && navMenu) {
         menuToggle.setAttribute('aria-expanded', String(isExpanded));
     }, { passive: true });
 
-    // Delegación: un solo listener en el <ul>
     navMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             nav.classList.remove('active');
@@ -54,7 +127,6 @@ if (menuToggle && nav && navMenu) {
         }
     });
 
-    // Cerrar al clic fuera del menú
     doc.addEventListener('click', (e) => {
         if (
             nav.classList.contains('active') &&
@@ -71,22 +143,16 @@ if (menuToggle && nav && navMenu) {
 
 // ============================================
 // 3. HEADER SCROLL
-// Usa requestAnimationFrame en lugar de setTimeout
-// para sincronizar con el ciclo de repintado del navegador.
-// Resultado: transición más suave y sin flickering.
 // ============================================
 if (header) {
     let ticking = false;
 
     const handleScroll = () => {
-        // Sin umbral de 50px — actualiza en cada scroll real
-        // El rAF ya controla la frecuencia de ejecución
         header.classList.toggle('scrolled', window.scrollY > 100);
         ticking = false;
     };
 
     window.addEventListener('scroll', () => {
-        // Si ya hay un frame pendiente, no encolar otro
         if (!ticking) {
             requestAnimationFrame(handleScroll);
             ticking = true;
@@ -97,13 +163,11 @@ if (header) {
 
 // ============================================
 // 4. COMPARTIR EN REDES SOCIALES
-// Solo se ejecuta si hay botones .btn-share en la página.
 // ============================================
 const shareButtons = doc.querySelectorAll('.btn-share');
 
 if (shareButtons.length > 0) {
 
-    // Crear el toast dinámicamente — no necesita estar en el HTML
     copyToast = doc.createElement('div');
     copyToast.id          = 'copy-toast';
     copyToast.textContent = '✓ Enlace copiado';
@@ -139,7 +203,6 @@ if (shareButtons.length > 0) {
         }, 3000);
     }
 
-    // Fallback para navegadores sin navigator.clipboard
     function fallbackCopy() {
         const textArea          = doc.createElement('textarea');
         textArea.value          = window.location.href;
@@ -205,21 +268,29 @@ if (shareButtons.length > 0) {
 
 
 // ============================================
-// 5. FORMULARIO DE CONTACTO
-// Un solo bloque unificado: validación + envío.
-// CORRECCIÓN: antes había DOS bloques if (contactForm) separados
-// con listeners 'submit' distintos — generaba comportamiento
-// inesperado cuando el form tenía errores.
+// 5. FORMULARIO DE CONTACTO + TURNSTILE
 // ============================================
 if (contactForm && submitBtn) {
 
-    // Limpiar al cargar — evita que el navegador recuerde
-    // campos de sesiones anteriores.
-    // CORRECCIÓN: 'pageshow' en lugar de 'load' para funcionar
-    // también cuando el usuario vuelve con el botón "Atrás".
+    const turnstileSiteKey = window.SITE_CONFIG?.turnstileSiteKey;
+    const turnstileContainer = doc.getElementById('turnstile-container');
+
+    if (turnstileSiteKey && turnstileContainer) {
+        const turnstileScript = doc.createElement('script');
+        turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+        turnstileScript.async = true;
+        turnstileScript.defer = true;
+        turnstileScript.onload = () => {
+            window.turnstile.render('#turnstile-container', {
+                sitekey: turnstileSiteKey,
+                theme:   'light'
+            });
+        };
+        doc.head.appendChild(turnstileScript);
+    }
+
     window.addEventListener('pageshow', () => {
         contactForm.reset();
-        // Limpiar estado visual de validación al reiniciar
         contactForm.querySelectorAll('.touched').forEach(el => {
             el.classList.remove('touched');
         });
@@ -229,7 +300,6 @@ if (contactForm && submitBtn) {
         });
     });
 
-    // --- Mensajes de error personalizados por campo ---
     const errorMessages = {
         nombre:    { valueMissing: 'Por favor escribe tu nombre.' },
         email:     {
@@ -240,7 +310,6 @@ if (contactForm && submitBtn) {
         mensaje:   { valueMissing: 'Cuéntanos algo — estamos aquí para escucharte.' }
     };
 
-    // Valida un campo y muestra/oculta su .field-error
     function validateField(input) {
         const errorSpan = input.closest('.form-group')?.querySelector('.field-error');
         if (!errorSpan) return;
@@ -264,40 +333,44 @@ if (contactForm && submitBtn) {
         }
     }
 
-    // Validar al salir del campo (blur)
     contactForm.querySelectorAll('input, select, textarea').forEach(field => {
         if (field.type === 'hidden' || field.type === 'checkbox') return;
 
         field.addEventListener('blur', () => validateField(field));
 
-        // Revalidar mientras escribe (solo después del primer blur)
         field.addEventListener('input', () => {
             if (field.classList.contains('touched')) validateField(field);
         });
     });
 
-    // --- Submit unificado: valida + envía + trackea ---
     contactForm.addEventListener('submit', (e) => {
 
-        // 1. Validar todos los campos requeridos
         let firstErrorField = null;
 
         contactForm.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
             validateField(field);
-            // CORRECCIÓN: guardar referencia directa al primer campo inválido
             if (!field.validity.valid && !firstErrorField) {
                 firstErrorField = field;
             }
         });
 
-        // 2. Si hay errores: enfocar el primero y detener envío
         if (firstErrorField) {
             e.preventDefault();
             firstErrorField.focus();
-            return; // Salir — no ejecutar el bloque de envío
+            return;
         }
 
-        // 3. Si no hay errores: feedback visual de envío
+        if (turnstileSiteKey && turnstileContainer) {
+            const token = turnstileContainer.querySelector('[name="cf-turnstile-response"]');
+            if (!token || !token.value) {
+                e.preventDefault();
+                alert('Por favor completa la verificación de seguridad antes de enviar.');
+                return;
+            }
+        }
+
+        sessionStorage.setItem('ga_form_submitted', Date.now().toString());
+
         submitBtn.disabled   = true;
         submitBtn.innerHTML  = `
             <span role="status" aria-live="polite">
@@ -312,8 +385,7 @@ if (contactForm && submitBtn) {
             </span>
         `;
 
-        // 4. Trackear envío en Analytics (solo si gtag disponible)
-        if (typeof gtag !== 'undefined') {
+        if (typeof gtag !== 'undefined' && analyticsAllowed()) {
             gtag('event', 'form_submission', {
                 event_category: 'contact',
                 event_label:    'formulario_contacto',
@@ -325,35 +397,12 @@ if (contactForm && submitBtn) {
 
 
 // ============================================
-// 6. GOOGLE ANALYTICS — EVENT TRACKING
-// Solo corre si gtag está disponible.
-// CORRECCIÓN: el tracking de form_submission se movió al
-// bloque del formulario (sección 5) para evitar duplicación.
+// 6. GOOGLE ANALYTICS — EVENT TRACKING REDUCIDO
+// Solo corre con consentimiento explícito.
 // ============================================
-if (typeof gtag !== 'undefined') {
+if (typeof gtag !== 'undefined' && analyticsAllowed()) {
 
-    // --- Clicks en botones CTA ---
     doc.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn, .btn-marca, .btn-blue, .btn-blanco, .btn-secondary');
-        if (btn) {
-            gtag('event', 'button_click', {
-                event_category: 'engagement',
-                event_label:    btn.textContent.trim().substring(0, 50),
-                value:          1
-            });
-        }
-
-        // --- Clicks en redes sociales ---
-        const socialLink = e.target.closest('.social-links a');
-        if (socialLink) {
-            gtag('event', 'social_click', {
-                event_category: 'social',
-                event_label:    socialLink.getAttribute('aria-label') || 'social',
-                value:          1
-            });
-        }
-
-        // --- Clicks en botones de compartir ---
         const shareBtn = e.target.closest('.btn-share');
         if (shareBtn) {
             gtag('event', 'share_click', {
@@ -364,9 +413,6 @@ if (typeof gtag !== 'undefined') {
         }
     });
 
-    // --- Scroll depth ---
-    // Registra 25%, 50%, 75% y 90% — una sola vez cada uno.
-    const scrollDepths  = [25, 50, 75, 90];
     const trackedDepths = new Set();
     let scrollTrackTimer = null;
 
@@ -378,35 +424,29 @@ if (typeof gtag !== 'undefined') {
                 ? Math.round((window.scrollY / docHeight) * 100)
                 : 0;
 
-            scrollDepths.forEach(depth => {
-                if (scrollPct >= depth && !trackedDepths.has(depth)) {
-                    trackedDepths.add(depth);
-                    gtag('event', 'scroll_depth', {
-                        event_category: 'engagement',
-                        event_label:    depth + '%',
-                        value:          depth
-                    });
-                }
-            });
+            if (scrollPct >= 75 && !trackedDepths.has(75)) {
+                trackedDepths.add(75);
+                gtag('event', 'scroll_depth', {
+                    event_category: 'engagement',
+                    event_label:    '75%',
+                    value:          75
+                });
+            }
 
             scrollTrackTimer = null;
         }, 250);
     }, { passive: true });
+}
 
-    // --- Tiempo en página ---
-    const timeMarkers = [
-        { seconds: 30,  label: '30_segundos' },
-        { seconds: 60,  label: '1_minuto'    },
-        { seconds: 180, label: '3_minutos'   }
-    ];
-
-    timeMarkers.forEach(({ seconds, label }) => {
-        setTimeout(() => {
-            gtag('event', 'tiempo_en_pagina', {
-                event_category: 'engagement',
-                event_label:    label,
-                value:          seconds
-            });
-        }, seconds * 1000);
-    });
+// Conversión en gracias.html — solo tras envío real reciente
+if (window.location.pathname.endsWith('/gracias.html') && typeof gtag !== 'undefined' && analyticsAllowed()) {
+    const submittedAt = sessionStorage.getItem('ga_form_submitted');
+    if (submittedAt && (Date.now() - parseInt(submittedAt, 10)) < 120000) {
+        gtag('event', 'form_submission_success', {
+            event_category: 'contact',
+            event_label:    'gracias_page_reached',
+            value:          1
+        });
+        sessionStorage.removeItem('ga_form_submitted');
+    }
 }

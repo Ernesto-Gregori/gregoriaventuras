@@ -1,42 +1,30 @@
 # robots.txt — Gregori Aventuras
-# Última actualización: 2026-05-03
-# Documentación: https://developers.google.com/search/docs/crawling-indexing/robots/intro
+# Última actualización: 2026-07-27
 
-# ── Todos los rastreadores ─────────────────────────────────────
 User-agent: *
 Allow: /
 
-# Archivos estáticos: no aportan nada indexado pero sí
-# consumen cuota de rastreo si Google los visita.
+# Archivos estáticos sin valor SEO propio
 Disallow: /js/
 Disallow: /css/
-Disallow: /img/
 
 # Páginas funcionales sin valor SEO
 Disallow: /gracias.html
 Disallow: /404.html
 
-# ── Sitemap ────────────────────────────────────────────────────
 Sitemap: https://gregoriaventuras.xyz/sitemap.xml
 
-# ── Googlebot ─────────────────────────────────────────────────
-# Crawl-delay: 0 es el comportamiento por defecto de Google.
-# Google ignora Crawl-delay — se controla desde Search Console.
-# Se mantiene por claridad pero no tiene efecto práctico.
 User-agent: Googlebot
 Allow: /
 Disallow: /js/
 Disallow: /css/
-Disallow: /img/
 Disallow: /gracias.html
 Disallow: /404.html
 
-# ── Bingbot ───────────────────────────────────────────────────
 User-agent: Bingbot
 Allow: /
 Disallow: /js/
 Disallow: /css/
-Disallow: /img/
 Disallow: /gracias.html
 Disallow: /404.html
 Crawl-delay: 1

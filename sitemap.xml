@@ -9,7 +9,7 @@
        ============================================================ -->
   <url>
     <loc>https://gregoriaventuras.xyz/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -54,7 +54,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://gregoriaventuras.xyz/img/banner-viaje-ume-tamaulipas-1200.jpg.jpg</image:loc>
+      <image:loc>https://gregoriaventuras.xyz/img/banner-viaje-ume-tamaulipas-1200.jpg</image:loc>
       <image:title>Neto y Diana en supermach con las iglesias de Tamaulipas, México</image:title>
     </image:image>
     <image:image>
@@ -205,6 +205,13 @@
   <lastmod>2026-05-03</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
+</url>
+
+<url>
+  <loc>https://gregoriaventuras.xyz/privacidad.html</loc>
+  <lastmod>2026-07-27</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
 </url>
 
 </urlset>
