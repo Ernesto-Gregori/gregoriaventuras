@@ -1,7 +1,7 @@
-// Configuración del sitio — edita solo este archivo para activar Turnstile.
-// 1. Cloudflare Dashboard → Turnstile → Add site → copia la Site Key aquí.
-// 2. Web3Forms Dashboard → tu formulario → Captcha → pega la Secret Key de Turnstile.
-// 3. Web3Forms → Settings → Allowed Domains → agrega gregoriaventuras.xyz
+// Configuración del sitio
+// hCaptcha (plan Free de Web3Forms): activar en https://app.web3forms.com
+// → tu formulario → Spam Protection → hCaptcha
+// No necesitas site key propia; Web3Forms la incluye en el plan gratuito.
 window.SITE_CONFIG = {
-  turnstileSiteKey: ''
+  hcaptchaEnabled: true
 };

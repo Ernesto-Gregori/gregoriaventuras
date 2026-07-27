@@ -268,26 +268,12 @@ if (shareButtons.length > 0) {
 
 
 // ============================================
-// 5. FORMULARIO DE CONTACTO + TURNSTILE
+// 5. FORMULARIO DE CONTACTO + hCAPTCHA (Web3Forms Free)
 // ============================================
 if (contactForm && submitBtn) {
 
-    const turnstileSiteKey = window.SITE_CONFIG?.turnstileSiteKey;
-    const turnstileContainer = doc.getElementById('turnstile-container');
-
-    if (turnstileSiteKey && turnstileContainer) {
-        const turnstileScript = doc.createElement('script');
-        turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-        turnstileScript.async = true;
-        turnstileScript.defer = true;
-        turnstileScript.onload = () => {
-            window.turnstile.render('#turnstile-container', {
-                sitekey: turnstileSiteKey,
-                theme:   'light'
-            });
-        };
-        doc.head.appendChild(turnstileScript);
-    }
+    const hcaptchaEnabled = window.SITE_CONFIG?.hcaptchaEnabled !== false;
+    const hcaptchaWidget  = contactForm.querySelector('.h-captcha[data-captcha="true"]');
 
     window.addEventListener('pageshow', () => {
         contactForm.reset();
@@ -360,9 +346,9 @@ if (contactForm && submitBtn) {
             return;
         }
 
-        if (turnstileSiteKey && turnstileContainer) {
-            const token = turnstileContainer.querySelector('[name="cf-turnstile-response"]');
-            if (!token || !token.value) {
+        if (hcaptchaEnabled && hcaptchaWidget) {
+            const hcaptchaResponse = contactForm.querySelector('[name="h-captcha-response"]');
+            if (!hcaptchaResponse || !hcaptchaResponse.value) {
                 e.preventDefault();
                 alert('Por favor completa la verificación de seguridad antes de enviar.');
                 return;
