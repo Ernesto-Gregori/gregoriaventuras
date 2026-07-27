@@ -22,3 +22,14 @@ Crea una regla para el hostname `gregoriaventuras.xyz` y agrega:
 - Rota la access key si detectas abuso
 
 > **Nota:** Cloudflare Turnstile y reCAPTCHA propio solo están disponibles en el plan **Pro** de Web3Forms. En Free usa hCaptcha con la integración zero-config del sitio.
+
+## Search Console: sitemap "No se ha podido obtener"
+
+Si Google no lee el sitemap, revisa en Cloudflare:
+
+1. **Security → Bots → Bot Fight Mode:** desactivado, o activa **Allow verified bots** (Googlebot).
+2. **Security → Settings → Security Level:** no uses "I'm Under Attack" de forma permanente.
+3. **Transform Rules (CSP):** aplica la regla solo a HTML, no a `/sitemap.xml` ni `/robots.txt`:
+   - Condición: `http.response.content_type.media_type` equals `text/html`
+4. En Search Console la propiedad debe ser **`https://gregoriaventuras.xyz`** (sin `www`; ese subdominio no existe).
+5. Elimina el sitemap en Search Console, espera 5–10 min tras el deploy, y vuelve a enviar `https://gregoriaventuras.xyz/sitemap.xml`.
