@@ -91,7 +91,10 @@ def process_file(path: Path) -> None:
     text = BOOTSTRAP_OLD.sub(BOOTSTRAP_NEW, text)
 
     # Replace inline SVG with span logo
-    text = SVG_PATTERN.sub('<span class="logo-icon" aria-hidden="true"></span>', text)
+    text = SVG_PATTERN.sub(
+        '<img src="/img/logo.svg" class="logo-icon" width="167" height="64" alt="" aria-hidden="true">',
+        text
+    )
 
     # GA consent default
     if "gtag('consent', 'default'" not in text and 'function gtag()' in text:
