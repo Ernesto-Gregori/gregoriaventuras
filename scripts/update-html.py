@@ -92,7 +92,7 @@ def process_file(path: Path) -> None:
 
     # Replace inline SVG with span logo
     text = SVG_PATTERN.sub(
-        '<img src="/img/logo.svg" class="logo-icon" width="167" height="64" alt="" aria-hidden="true">',
+        '<img src="/img/logo-white.svg" class="logo-icon" width="167" height="64" alt="" aria-hidden="true">',
         text
     )
 
