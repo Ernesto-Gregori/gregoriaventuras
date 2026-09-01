@@ -13,7 +13,9 @@ CSP = (
     "https://hcaptcha.com https://*.hcaptcha.com; "
     "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; "
     "img-src 'self' data: https:; "
-    "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com "
+    "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com "
+    "https://analytics.google.com https://region1.google-analytics.com https://www.google.com "
+    "https://www.googletagmanager.com "
     "https://api.web3forms.com https://hcaptcha.com https://*.hcaptcha.com https://newassets.hcaptcha.com "
     "https://cloudflareinsights.com https://*.cloudflareinsights.com; "
     "frame-src https://hcaptcha.com https://*.hcaptcha.com https://newassets.hcaptcha.com; "
@@ -39,10 +41,15 @@ SVG_PATTERN = re.compile(
     re.S
 )
 
-CONSENT_BLOCK = """    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'wait_for_update': 500
+CONSENT_BLOCK = """    var gaConsentGranted = false;
+    try {
+      gaConsentGranted = localStorage.getItem('ga_consent') === 'granted';
+    } catch (e) {}
+
+    gtag('consent', 'default', {
+      analytics_storage: gaConsentGranted ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      wait_for_update: gaConsentGranted ? 0 : 2000
     });
 """
 

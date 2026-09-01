@@ -4,7 +4,7 @@
   <!-- ======= META TAGS — sin cambios, están bien ======= -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://web3forms.com https://js.hcaptcha.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://hcaptcha.com https://*.hcaptcha.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://api.web3forms.com https://hcaptcha.com https://*.hcaptcha.com https://newassets.hcaptcha.com https://cloudflareinsights.com https://*.cloudflareinsights.com; frame-src https://hcaptcha.com https://*.hcaptcha.com https://newassets.hcaptcha.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://web3forms.com https://js.hcaptcha.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://hcaptcha.com https://*.hcaptcha.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.google.com https://www.googletagmanager.com https://api.web3forms.com https://hcaptcha.com https://*.hcaptcha.com https://newassets.hcaptcha.com https://cloudflareinsights.com https://*.cloudflareinsights.com; frame-src https://hcaptcha.com https://*.hcaptcha.com https://newassets.hcaptcha.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'">
   <meta name="description" content="Somos Ernesto y Diana, una pareja que vive la aventura en compañía. Únete a nuestro viaje de fe y descubre recursos para tu crecimiento espiritual.">
   <meta name="keywords" content="gregori aventuras, ernesto y diana gregori, aventura de fe, vida en misión, matrimonio misionero, estudios teológicos, ministerio juvenil, caminar con propósito, pareja cristiana, servicio cristiano, campamentos juveniles, recursos espirituales, devocionales">
   <meta name="author" content="Ernesto y Diana Gregori">
@@ -73,15 +73,21 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'wait_for_update': 500
+
+    var gaConsentGranted = false;
+    try {
+      gaConsentGranted = localStorage.getItem('ga_consent') === 'granted';
+    } catch (e) {}
+
+    gtag('consent', 'default', {
+      analytics_storage: gaConsentGranted ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      wait_for_update: gaConsentGranted ? 0 : 2000
     });
     gtag('js', new Date());
     gtag('config', 'G-BC3TJJ64SL', {
-      'transport_type': 'beacon',
-      'page_path': location.pathname
+      transport_type: 'beacon',
+      send_page_view: gaConsentGranted
     });
   </script>
 
