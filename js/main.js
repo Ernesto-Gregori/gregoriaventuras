@@ -22,6 +22,15 @@ function analyticsAllowed() {
     return localStorage.getItem(CONSENT_KEY) === 'granted';
 }
 
+function sendAnalyticsPageView() {
+    if (typeof gtag === 'undefined') return;
+    gtag('event', 'page_view', {
+        page_path:     location.pathname + location.search,
+        page_location: location.href,
+        page_title:    document.title
+    });
+}
+
 function grantAnalyticsConsent() {
     localStorage.setItem(CONSENT_KEY, 'granted');
     if (typeof gtag !== 'undefined') {
@@ -29,6 +38,7 @@ function grantAnalyticsConsent() {
             analytics_storage: 'granted',
             ad_storage:         'denied'
         });
+        sendAnalyticsPageView();
     }
     hideCookieBanner();
 }
@@ -49,13 +59,8 @@ function hideCookieBanner() {
 }
 
 function initCookieBanner() {
+    // Visitantes recurrentes: el script inline de GA ya restauró el consentimiento.
     if (localStorage.getItem(CONSENT_KEY)) {
-        if (analyticsAllowed() && typeof gtag !== 'undefined') {
-            gtag('consent', 'update', {
-                analytics_storage: 'granted',
-                ad_storage:         'denied'
-            });
-        }
         return;
     }
 
