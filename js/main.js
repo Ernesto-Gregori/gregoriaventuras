@@ -142,36 +142,15 @@ if (menuToggle && nav && navMenu) {
 
 
 // ============================================
-// 3. HEADER SCROLL + LOGO
+// 3. HEADER SCROLL
 // ============================================
-const LOGO_WHITE = '/img/logo-white.svg';
-const LOGO_DARK  = '/img/logo-dark.svg';
-
-function updateLogo() {
-    if (!header) return;
-    const logoImg = header.querySelector('.logo-icon');
-    if (!logoImg) return;
-
-    const logoLink = header.querySelector('.logo');
-    const useDark  = header.classList.contains('scrolled')
-                  || logoLink?.classList.contains('logo-404');
-
-    logoImg.src = useDark ? LOGO_DARK : LOGO_WHITE;
-}
-
 if (header) {
     let ticking = false;
 
     const handleScroll = () => {
-        const scrolled = window.scrollY > 100;
-        if (header.classList.contains('scrolled') !== scrolled) {
-            header.classList.toggle('scrolled', scrolled);
-            updateLogo();
-        }
+        header.classList.toggle('scrolled', window.scrollY > 100);
         ticking = false;
     };
-
-    updateLogo();
 
     window.addEventListener('scroll', () => {
         if (!ticking) {
@@ -179,6 +158,8 @@ if (header) {
             ticking = true;
         }
     }, { passive: true });
+
+    handleScroll();
 }
 
 

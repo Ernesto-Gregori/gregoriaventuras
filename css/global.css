@@ -812,8 +812,8 @@ footer {
 
 /* Logo */
 .logo {
+  display: inline-grid;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
   transition: opacity 0.3s;
   color: var(--blanco);
@@ -829,11 +829,21 @@ footer {
   y demasiado pequeño en móviles pequeños.
 */
 .logo-icon {
+  grid-area: 1 / 1;
   height: clamp(40px, 6vw, 64px);
   width: auto;
   display: block;
   flex-shrink: 0;
 }
+
+/* Dos SVG superpuestos: solo uno visible — sin filtros CSS ni swap por JS */
+.logo-dark { display: none; }
+
+.header.scrolled .logo-light,
+.logo-404 .logo-light { display: none; }
+
+.header.scrolled .logo-dark,
+.logo-404 .logo-dark { display: block; }
 
 .header.scrolled .logo { color: var(--azul-mineral); }
 
