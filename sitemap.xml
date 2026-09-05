@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://gregoriaventuras.xyz/</loc>
-    <lastmod>2026-07-27</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -38,7 +38,18 @@
 
   <url>
     <loc>https://gregoriaventuras.xyz/compartir/mayo-junio-2026.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/produccion-eventos-1200.jpg</image:loc>
+      <image:title>Neto y Diana junto con el equipo de producción de eventos en los campamentos de verano de Palabra de Vida México</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/mayo-junio-2026.html</loc>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
