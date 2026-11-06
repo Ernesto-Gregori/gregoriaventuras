@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://gregoriaventuras.xyz/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -37,8 +37,19 @@
   </url>
 
   <url>
-    <loc>https://gregoriaventuras.xyz/compartir/mayo-junio-2026.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://gregoriaventuras.xyz/compartir/septiembre-octubre-2026.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gregoriaventuras.xyz/img/neto-diana-gira-1200.jpg</image:loc>
+      <image:title>Neto y Diana junto con el equipo de Palabra de Vida El Salvador durante la Gira del Niño</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://gregoriaventuras.xyz/compartir/julio-agosto-2026.html</loc>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
