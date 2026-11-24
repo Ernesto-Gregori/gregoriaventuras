@@ -1,5 +1,7 @@
 # Configuración de cabeceras en Cloudflare (plan Free)
 
+Índice del repositorio: [README](../README.md). Publicar una entrada: [contenido.md](contenido.md). CSS, JavaScript y la CSP del HTML: [desarrollo.md](desarrollo.md).
+
 GitHub Pages no permite cabeceras HTTP personalizadas. Como el sitio usa Cloudflare como proxy, configura esto en el panel (gratis):
 
 ## Transform Rules → Modify Response Header
