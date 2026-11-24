@@ -24,8 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:wght@400;500&family=Satisfy&display=swap" rel="stylesheet">   
     <!-- CSS -->
     <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="preload" href="../css/styles.css" as="style">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preload" href="../css/global.css" as="style">
+    <link rel="stylesheet" href="../css/global.css">
 
     <style>
 
@@ -36,7 +36,7 @@
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            background: linear-gradient(135deg, var(--azul-mineral) 0%, var(--terracota) 100%); 
+            background: linear-gradient(135deg, var(--azul-mineral) 0%, var(--terracota-oscuro) 100%); 
             color: var(--blanco); 
             padding: 10rem 2rem 4rem; 
         }
@@ -111,7 +111,7 @@
         }
 
         label .required { 
-            color: var(--terracota); 
+            color: var(--terracota-oscuro); 
         }
 
         input, select { 
@@ -125,14 +125,15 @@
             background: var(--blanco); 
         }
 
-        input:focus, select:focus { 
-            outline: none; 
-            border-color: var(--terracota); 
+        input:focus-visible, select:focus-visible { 
+            outline: 2px solid var(--terracota-oscuro);
+            outline-offset: 2px;
+            border-color: var(--terracota-oscuro); 
         }
 
         input::placeholder { 
-            color: var(--azul-mineral); 
-            opacity: 0.5; 
+            color: var(--tinta-suave); 
+            opacity: 1; 
         }
 
         .form-help { 
@@ -146,7 +147,7 @@
         .btn-submit { 
             width: 100%; 
             padding: 1.5rem 2rem; 
-            background: var(--terracota); 
+            background: var(--terracota-oscuro); 
             color: var(--blanco); 
             border: none; 
             border-radius: 50px; 
@@ -154,7 +155,7 @@
             font-weight: 600; 
             font-size: 1.8rem; 
             cursor: pointer; 
-            transition: all 0.3s; 
+            transition: background-color 200ms cubic-bezier(0.23, 1, 0.32, 1), transform 140ms cubic-bezier(0.23, 1, 0.32, 1); 
             box-shadow: 0 6px 20px rgba(217, 125, 84, 0.3); 
             display: flex;
             align-items: center;
@@ -164,7 +165,7 @@
 
         .btn-submit:hover { 
             background: var(--terracota-hover); 
-            transform: translateY(-3px); 
+            transform: none; 
             box-shadow: 0 8px 25px rgba(217, 125, 84, 0.4); 
         }
 
@@ -247,7 +248,7 @@
         }
 
         .social-links a:hover { 
-            color: var(--terracota); 
+            color: var(--terracota-oscuro); 
         }
 
         .copyright { 
@@ -260,7 +261,7 @@
         .loading { 
             display: none; 
             font-size: 1.4rem; 
-            color: var(--terracota); 
+            color: var(--terracota-oscuro); 
             margin-top: 1rem; 
             text-align: center; 
         }

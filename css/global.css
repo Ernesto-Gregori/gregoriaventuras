@@ -276,7 +276,10 @@ p { text-wrap: pretty; }
 .btn-blue,
 .btn-blanco,
 .btn-secondary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radio-sm);
   font-family: var(--fuente-titulo);
@@ -713,9 +716,17 @@ p { text-wrap: pretty; }
 
 label {
   display: block;
-  font-weight: 500;
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 0.95rem;
   margin-bottom: 0.5rem;
   color: var(--azul-mineral);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--tinta-suave);
+  opacity: 1;
 }
 
 input, select, textarea {
@@ -813,6 +824,15 @@ footer {
   color: #d5d1c6;
   font-family: var(--fuente-titulo);
   font-size: 0.85rem;
+}
+
+/* El terracota de los enlaces del cuerpo no se lee sobre el azul. */
+footer a {
+  color: var(--mostaza);
+}
+
+footer a:hover {
+  color: var(--blanco);
 }
 
 
@@ -1474,12 +1494,21 @@ textarea:valid.touched {
     width: 100%;
     background: var(--azul-mineral);
     flex-direction: column;
-    padding: var(--espacio-sm);
+    gap: 0.25rem;
+    padding: 0.5rem;
     margin: 0;
   }
 
-  .nav-menu.active { display: flex; }
-  .nav-menu a      { padding: var(--espacio-sm); }
+  .nav-menu.active {
+    display: flex;
+    border-bottom: 1px solid rgba(234, 231, 220, 0.28);
+    box-shadow: 0 16px 32px rgba(32, 46, 59, 0.28);
+  }
+  .nav-menu a {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radio-sm);
+  }
 
   /* Herramientas: 1 columna en tablet */
   .herramientas-grid {
@@ -1521,6 +1550,7 @@ textarea:valid.touched {
   .error-text    { font-size: 1rem; }
 
   .hero         { min-height: 90vh; }
+  body:has(#cookie-consent) { padding-bottom: 14rem; }
   .impact-stats { grid-template-columns: 1fr; }
   .menu-toggle  { font-size: 1.5rem; }
 }
@@ -1530,6 +1560,10 @@ textarea:valid.touched {
    SPINNER — botón de envío del formulario
    ============================================================ */
 /* Banner de consentimiento de cookies */
+body:has(#cookie-consent) {
+  padding-bottom: 8.5rem;
+}
+
 #cookie-consent {
   position: fixed;
   bottom: 0;
